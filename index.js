@@ -36,6 +36,7 @@ var index_hbs = compile_handlebars('index');
 var signup_hbs = compile_handlebars('signup');
 var login_hbs = compile_handlebars('login');
 var form_hbs = compile_handlebars('form');
+var dashboard_hbs = compile_handlebars('dashboard');
 
 // -------------- express listener -------------- //
 
@@ -46,7 +47,21 @@ var listener = server.listen(app.get('port'), function() {
 // -------------- express getters -------------- //
 
 app.get('/', function (req, res, next) {
-    render_index(req, res);
+    var user = firebase.auth().currentUser;
+    if (user) {
+      var userId = firebase.auth().currentUser.uid;
+return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
+  var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
+  if(snapshot.val().isSponsor) {
+    render_dashboard(req, res, "display:none", "");
+  }
+  else {
+      render_dashboard(req, res, "", "display:none");
+  }
+});
+    } else {
+      render_index(req, res);
+    }
 });
 
 // -------------- intermediary login helper -------------- //
@@ -58,8 +73,23 @@ app.get('/signup', function (req, res, next) {
     render_signup(req, res);
 });
 
-app.get('/user', function (req, res, next) {
-    render_user(req, res);
+app.get('/dashboard', function (req, res, next) {
+        var user = firebase.auth().currentUser;
+
+    if (user) {
+      var userId = firebase.auth().currentUser.uid;
+return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
+  var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
+  if(snapshot.val().isSponsor) {
+    render_dashboard(req, res, "display:none", "");
+  }
+  else {
+      render_dashboard(req, res, "", "display:none");
+  }
+});
+    } else {
+      render_dashboard(req, res, "display:none", "display:none");
+    }
 });
 
 app.get('/form', function (req, res, next) {
@@ -103,10 +133,12 @@ function render_login(req, res) {
     res.send(htmlOutputString);    
 }
 
-function render_user(req, res) {
-    var context = {  };
+function render_dashboard(req, res, client, sponsor) {
+    var context = {client_show: client,
+                   sponsor_show: sponsor };
 
-    var htmlOutputString = user_hbs.run(context);
+
+    var htmlOutputString = dashboard_hbs.run(context);
     res.send(htmlOutputString);    
 }
 
@@ -153,6 +185,9 @@ io.on('connection',function(socket){
             // No user is signed in.
           }
         });
+        setTimeout(function(){
+            socket.emit("done_login", {});
+        }, 2000);
         socket.emit("done_signUp", {});
     });
     socket.on("login_user", function(data) {
@@ -162,7 +197,10 @@ io.on('connection',function(socket){
           var errorMessage = error.message;
           // ...
         });
-        socket.emit("done_login", {});
+        setTimeout(function(){
+            socket.emit("done_login", {});
+        }, 2000);
+        
     });
     socket.on("signout", function(data) {
       firebase.auth().signOut().then(function() {
