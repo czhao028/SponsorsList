@@ -239,7 +239,6 @@ io.on('connection',function(socket){
       });
 
     });
-
     socket.on("submit_request", function(data) {
       var user = firebase.auth().currentUser;
       firebase.database().ref('/requests/'+data.name).set({
@@ -310,5 +309,14 @@ io.on('connection',function(socket){
       </div>*/
     });
 })
+    socket.on("getUserInfo", function(data){
+        var user = firebase.auth().currentUser;
+        var myname = user.displayName;
+        var myemail = user.email;
+        var myisSponsor = user.isSponsor;
+        socket.emit("userInfoReceived", {name:myname, email:myemail, isSponsor:myisSponsor});
+    })
+});
+
 
 app.use(express.static(process.env.PWD + '/'));
