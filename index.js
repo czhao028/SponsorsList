@@ -326,6 +326,7 @@ io.on('connection',function(socket) {
                               <p id = "card-payment_method" class = "card-payment_method">Contribution Freququency: '+child.val().frequency+'</p> \
                               <p id = "card-text" class="card-text">'+child.val().description+'</p>\
                               <button type="button" class="btn btn-success" onclick = "match('+child.val().submitter+')">Match</button>\
+                              <button type="button" class="btn btn-success" onclick = "match(`'+child.val().submitter+'`)">Match</button>\
                                   <button type="button" class="btn btn-danger" onclick = "reject()">Reject</button>\
                             </div>\
                           </div>'
