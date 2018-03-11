@@ -21,14 +21,14 @@ var config = {
 };
 firebase.initializeApp(config);
 
-process.env.PWD = process.cwd()
+process.env.PWD = process.cwd();
 
 // -------------- express initialization -------------- //
 
 // PORT SETUP
 app.set('port', process.env.PORT || 5000 );
 // SO THAT EXPRESS KNOWS IT IS SITTING BEHIND A PROXY
-app.set('trust proxy', 1) // trust first proxy 
+app.set('trust proxy', 1); // trust first proxy
 
 // -------------- variable initialization -------------- //
 // handlebars compiled 
@@ -191,54 +191,64 @@ function read_file_sync(f_name) {
     return fs.readFileSync(__dirname +'\\'+f_name+'.hbs').toString();
 }
 
-io.on('connection',function(socket){
-    socket.on("signup_user", function(data){
-        
-        firebase.auth().createUserWithEmailAndPassword(data.email, data.password).catch(function(error) {
-          // Handle Errors here.
-          var errorCode = error.code;
-          var errorMessage = error.message;
-          // ...
+io.on('connection',function(socket) {
+    socket.on("signup_user", function (data) {
+
+        firebase.auth().createUserWithEmailAndPassword(data.email, data.password).catch(function (error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // ...
         });
         var user = firebase.auth().currentUser;
 
-        firebase.auth().onAuthStateChanged(function(user) {
-          if (user) {
-            firebase.database().ref('/users/'+user.uid).set({
-                isSponsor: data.isSponsor,
-                email: data.email,
-                money: 0
-            });
-          } else {
-            // No user is signed in.
-          }
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+                firebase.database().ref('/users/' + user.uid).set({
+                    isSponsor: data.isSponsor,
+                    email: data.email,
+                    money: 0
+                });
+            } else {
+                // No user is signed in.
+            }
         });
-        setTimeout(function(){
+        setTimeout(function () {
             socket.emit("done_login", {});
         }, 2000);
         socket.emit("done_signUp", {});
     });
-    socket.on("login_user", function(data) {
-        firebase.auth().signInWithEmailAndPassword(data.email, data.password).catch(function(error) {
-          // Handle Errors here.
-          var errorCode = error.code;
-          var errorMessage = error.message;
-          // ...
+    socket.on("login_user", function (data) {
+        firebase.auth().signInWithEmailAndPassword(data.email, data.password).catch(function (error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // ...
         });
-        setTimeout(function(){
+        setTimeout(function () {
             socket.emit("done_login", {});
         }, 2000);
-        
-    });
-    socket.on("signout", function(data) {
-      firebase.auth().signOut().then(function() {
-        console.log("logout");
-        socket.emit("done_signout", {});
-      }).catch(function(error) {
-        // An error happened.
-      });
 
     });
+    socket.on("signout", function (data) {
+        firebase.auth().signOut().then(function () {
+            console.log("logout");
+            socket.emit("done_signout", {});
+        }).catch(function (error) {
+            // An error happened.
+        });
+
+    });
+
+
+    socket.on("getUserInfo", function (data) {
+        var user = firebase.auth().currentUser;
+        var myname = user.uid;
+        var myemail = user.email;
+        var myisSponsor = user.isSponsor;
+        socket.emit("userInfoReceived", {name: myname, email: myemail, isSponsor: myisSponsor});
+    });
+
 
     socket.on("submit_request", function(data) {
       var user = firebase.auth().currentUser;
@@ -253,50 +263,83 @@ io.on('connection',function(socket){
           education: data.education,
           gaming: data.gaming,
           technology: data.technology,
-          submitter: user.uid
+          submitter: user.uid,
+          matches: data.matches
         });
-      socket.emit("submitted", {});
+        socket.emit("submitted", {});
     });
 
-    socket.on("submit_sponsor", function(data) {
-      var user = firebase.auth().currentUser;
-      firebase.database().ref('/sponsors/'+user.uid).set({
-          service: data.service,
-          outreach: data.outreach,
-          education: data.education,
-          gaming: data.gaming,
-          technology: data.technology,
-          phone: data.phone,
-          maxBudget: data.maxBudget,
-          description: data.description,
-          once: data.once,
-          weekly: data.weekly,
-          biweekly: data.biweekly,
-          monthly: data.weekly,
-          yearly: data.yearly,
-          submitter: user.uid
+    socket.on("submit_sponsor", function (data) {
+        var user = firebase.auth().currentUser;
+        firebase.database().ref('/sponsors/' + user.uid).set({
+            service: data.service,
+            outreach: data.outreach,
+            education: data.education,
+            gaming: data.gaming,
+            technology: data.technology,
+            phone: data.phone,
+            maxBudget: data.maxBudget,
+            description: data.description,
+            once: data.once,
+            weekly: data.weekly,
+            biweekly: data.biweekly,
+            monthly: data.weekly,
+            yearly: data.yearly,
+            submitter: user.uid
         });
-      socket.emit("submitted", {});
+        socket.emit("submitted", {});
     });
 
-    socket.on("getEvents", function(data) {
+    socket.on("getEvents", function (data) {
         var rootRef = firebase.database().ref("requests/");
-        rootRef.once("value", function(snapshot) {
-          snapshot.forEach(function(child) {
-            socket.emit("newEventAdded", {file:'<div class="card border-primary mb-3" style="max-width: 40rem;" padding = "10px">\
+        rootRef.once("value", function (snapshot) {
+            snapshot.forEach(function (child) {
+                socket.emit("newEventAdded", {
+                    file: '<div class="card border-primary mb-3" style="max-width: 40rem;" padding = "10px">\
         <div class="card-header">Event</div>\
         <div class="card-body">\
-          <h4 class="card-title">'+child.val().name+'</h4>\
-          <p id = "card-cost" class = "card-cost">'+child.val().goal+'</p>\
-          <p id = "card-payment_method" class = "card-payment_method">'+child.val().dealType+'</p> \
-          <p id = "card-text" class="card-text">'+child.val().description+'</p>\
+          <h4 class="card-title">' + child.val().name + '</h4>\
+          <p id = "card-cost" class = "card-cost">' + child.val().goal + '</p>\
+          <p id = "card-payment_method" class = "card-payment_method">' + child.val().dealType + '</p> \
+          <p id = "card-text" class="card-text">' + child.val().description + '</p>\
           <button type="button" class="btn btn-success" onclick = "match()">Match</button>\
               <button type="button" class="btn btn-danger" onclick = "reject()">Reject</button>\
         </div>\
-      </div>'});
-          });
+      </div>'
+                });
+            });
         });
+    // socket.on("match", function(data){
+    //   var user = firebase.auth().currentUser;
+    //   var clientId = data.data[0];
+    //   console.log("user id: "+ user.uid)
+    //   console.log("clientId: " + clientId);
+    //   firebase.database().ref('/match/'+user.uid).set({
+    //     id:clientId
+    //   })
+    //   firebase.database().ref('/match/'+clientId).set({
+    //     id:user.uid
+    //   })
+    //   firebase.database().ref('/match/null').once('value').then(function(snapshot){
+    //     console.log("snapshot id: " + snapshot.val())
+    //   })
+        
+    // })
 
+
+        /*<div class="card border-primary mb-3" style="max-width: 40rem;" padding = "10px">
+          <div class="card-header">Event</div>
+          <div class="card-body">
+            <h4 class="card-title">Hack TJ</h4>
+            <p id = "card-cost" class = "card-cost"> $1000.00 </p>
+            <p id = "card-payment_method" class = "card-payment_method">One time</p>
+            <p id = "card-text" class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <button type="button" class="btn btn-success" onclick = "match()">Match</button>
+                <button type="button" class="btn btn-danger" onclick = "reject()">Reject</button>
+          </div>
+        </div>*/
+
+    // Attach a listener to read the data at our posts reference
       /*<div class="card border-primary mb-3" style="max-width: 40rem;" padding = "10px">
         <div class="card-header">Event</div>
         <div class="card-body">
@@ -309,6 +352,5 @@ io.on('connection',function(socket){
         </div>
       </div>*/
     });
-})
-
+});
 app.use(express.static(process.env.PWD + '/'));
