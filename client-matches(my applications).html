@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+	<script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+	<script type="text/javascript">
+		window.sr = ScrollReveal({duration:2500});
+	</script> 
+    <title>Client's my applications)</title>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	  <a class="navbar-brand" href="sponsor_view.html">Dashboard</a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation" style="">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+
+	  <div class="collapse navbar-collapse" id="navbarColor02">
+	    <ul class="navbar-nav ml-auto">
+	      
+	     <ul class="navbar-nav mr-auto">
+			  
+			  <li class="nav-item">
+			    <a class="nav-link" href="#">Logout</a>
+			  </li>
+	    </ul>
+	    
+	  </div>
+	</nav>
+	<h1 style="text-align: center; padding-top: 5%"> Your  Matches </h1>
+	<div id = "allMatches" style="display: block; margin: 0 auto; padding: 10px;"></div>
+
+	<script type="text/javascript">
+		function returnMatches(){
+			//firebase stuff
+			return {matches:[
+					{
+						typeName:"Event",
+						name:"HackTJ",
+						cost:1000.00,
+						termLength: "One-time",
+						description:"HackTJ is an event that reaches over 500 people annually, with students coming in all across the country..."
+					},
+					{
+						typeName:"School Club",
+						name:"TJ Ethics Bowl",
+						cost:100.00,
+						termLength: "Monthly",
+						description:"A group that values ethics at TJ. Also a meme..."
+					}
+
+				]
+			}
+		}
+		var allMatchesDiv = document.getElementById('allMatches');
+		allMatchesDiv.innerHTML = "";
+		var allCurly = returnMatches().matches;
+		for (var pointer in allCurly){
+			nodeEvent = allCurly[pointer];
+			allMatchesDiv.innerHTML += '<div class="card text-white bg-success mb-3" style="max-width: 40rem; text-align:center; display:block; margin: 0 auto;"><div class="card-header">'+nodeEvent.typeName+'</div><div class="card-body"><a href = "#"><h2 class="card-title" style="color:#eeeeee">'+nodeEvent.name+'</h2></a><p id = "card-cost" class = "card-cost">$'+nodeEvent.cost+' ('+nodeEvent.termLength+')</p><p id = "card-text" class="card-text">'+nodeEvent.description+'</p></div>'; 
+		}
+
+	</script>
+</body>
