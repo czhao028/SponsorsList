@@ -9,51 +9,55 @@
   <link rel="stylesheet" type="text/css" href="client_view.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    window.sr = ScrollReveal({duration:2500});
+  </script> 
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">SponsorsList</a>
+    <a class="navbar-brand" href="client_view.html">SponsorsList</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation" style="">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarColor02">
-      <ul class="navbar-nav mr-auto">
+      <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="#">Logout <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
-        </li>
+        <!--PLEASE CHANGE THIS TO CHECK LOGOUT STATUS AND LOGOUT-->
+        
       </ul>
     </div>
   </nav>
-  <h1 class="welcome_message">Welcome Joseph!</h1>
-  <h3 class="user_type_label">Client</h3>
-  <h2 class="sponsor_notification">You have <a href="#">0</a> sponsor matches</h2>
-  <div class="container navigation_box">
-    <div class="row" style="width: 100%;">
-      <div class="col-sm">
-        <a href="#" id="applyButton">Apply</a>
+  <div class="card border-dark mb-3" style="width:80%; display:block; margin:0 auto; margin-top: 5%;">
+    <div class="card-header" style="padding-bottom: 3%"></div>
+    <h1 class="card-title" style="text-align: center; padding-top: 3%">Welcome Joseph!</h1>
+    <div class="card-text" style="padding-bottom: 4%">
+      <h3 class="user_type_label text-info">Client</h3>
+      <h2 class="sponsor_notification">You have <a href="#">0</a> sponsor matches</h2>
+      <div class="container navigation_box">
+        <div class="row" style="width: 100%;">
+          <div class="col-sm">
+            <a href="#" id="applyButton">Apply</a>
+          </div>
+          <div class="col-sm">
+            <a href="#" id="appButton">My Applications</a>
+          </div>
+          <div class="col-sm">
+            <a href="#" id="matchButton">Matches</a>
+          </div>
+          <div class="col-sm">
+            <a href="#" id="chatButton">Chat</a>
+          </div>
       </div>
-      <div class="col-sm">
-        <a href="#" id="appButton">My Applications</a>
-      </div>
-      <div class="col-sm">
-        <a href="#" id="matchButton">Matches</a>
-      </div>
-      <div class="col-sm">
-        <a href="#" id="chatButton">Chat</a>
-      </div>
+    </div>
   </div>
-  <p class="description" id="desc_info"></p>
 </div>
+
+<p class="description" id="desc_info" style="text-align: center;"></p>
+
 </body>
 <script type="text/javascript">
   $("#applyButton").hover(
@@ -84,5 +88,8 @@
       document.getElementById("desc_info").innerHTML="";
     }
   );
+</script>
+<script type="text/javascript">
+  sr.reveal('div');
 </script>
 </html>
