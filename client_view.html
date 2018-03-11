@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bootstrap.css">
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="client_view.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">SponsorsList</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation" style="">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor02">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Pricing</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <h1 class="welcome_message">Welcome Joseph!</h1>
+  <h3 class="user_type_label">Client</h3>
+  <h2 class="sponsor_notification">You have <a href="#">0</a> sponsor matches</h2>
+  <div class="container navigation_box">
+    <div class="row" style="width: 100%;">
+      <div class="col-sm">
+        <a href="#" id="applyButton">Apply</a>
+      </div>
+      <div class="col-sm">
+        <a href="#" id="appButton">My Applications</a>
+      </div>
+      <div class="col-sm">
+        <a href="#" id="matchButton">Matches</a>
+      </div>
+      <div class="col-sm">
+        <a href="#" id="chatButton">Chat</a>
+      </div>
+  </div>
+  <p class="description" id="desc_info"></p>
+</div>
+</body>
+<script type="text/javascript">
+  $("#applyButton").hover(
+    function() {
+      document.getElementById("desc_info").innerHTML="Apply to find potential sponsors!";
+    }, function() {
+      document.getElementById("desc_info").innerHTML="";
+    }
+  );
+  $("#appButton").hover(
+    function() {
+      document.getElementById("desc_info").innerHTML="Check out your current applications!";
+    }, function() {
+      document.getElementById("desc_info").innerHTML="";
+    }
+  );
+  $("#matchButton").hover(
+    function() {
+      document.getElementById("desc_info").innerHTML="Browse through Sponsors that matched with you!";
+    }, function() {
+      document.getElementById("desc_info").innerHTML="";
+    }
+  );
+  $("#chatButton").hover(
+    function() {
+      document.getElementById("desc_info").innerHTML="Chat with a Sponsor!";
+    }, function() {
+      document.getElementById("desc_info").innerHTML="";
+    }
+  );
+</script>
+</html>
