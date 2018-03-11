@@ -32,24 +32,66 @@
 		<div class="row">
 			<div class="col-sm-3"></div>
 			<div class="col-sm-6 center-block">
+				<h1 style="text-align: center">Search for Clients</h1><br>
 				<div class="form-group">
-					<input class="form-control" type="text" id="companyName" placeholder="Company Name">
+					<h5>Select Causes</h5>
+					<div class="custom-control custom-checkbox">
+					  <input type="checkbox" class="custom-control-input" id="customCheck1">
+					  <label class="custom-control-label" for="customCheck1">Community Service</label>
+					</div>
+					<div class="custom-control custom-checkbox">
+					  <input type="checkbox" class="custom-control-input" id="customCheck1">
+					  <label class="custom-control-label" for="customCheck1">Outreach</label>
+					</div>
+					<div class="custom-control custom-checkbox">
+					  <input type="checkbox" class="custom-control-input" id="customCheck1" >
+					  <label class="custom-control-label" for="customCheck1">Education</label>
+					</div>
+					<div class="custom-control custom-checkbox">
+					  <input type="checkbox" class="custom-control-input" id="customCheck1" >
+					  <label class="custom-control-label" for="customCheck1">Technology</label>
+					</div>
+					<div class="custom-control custom-checkbox">
+					  <input type="checkbox" class="custom-control-input" id="customCheck1" >
+					  <label class="custom-control-label" for="customCheck1">Gaming</label>
+					</div>
+				</div>
+				<h5>Phone Number</h5>
+				<div class="form-group">
+					<input class="form-control" type="tel" name="usrtel" id="phone">
 				</div>
 				<div class="form-group">
-					<input class="form-control" type="text" id="location" placeholder="Location">
+					<h5>Maximum Budget</h5>
+					<input class="form-control" type="number" id="goal" placeholder="USD (digits only)"></input>
 				</div>
+
+				<h5>Select Causes</h5>
+					<div class="custom-control custom-checkbox">
+					  <input type="checkbox" class="custom-control-input" id="customCheck1">
+					  <label class="custom-control-label" for="customCheck1">One-time</label>
+					</div>
+					<div class="custom-control custom-checkbox">
+					  <input type="checkbox" class="custom-control-input" id="customCheck1">
+					  <label class="custom-control-label" for="customCheck1">Weekly</label>
+					</div>
+					<div class="custom-control custom-checkbox">
+					  <input type="checkbox" class="custom-control-input" id="customCheck1" >
+					  <label class="custom-control-label" for="customCheck1">Bi-weekly</label>
+					</div>
+					<div class="custom-control custom-checkbox">
+					  <input type="checkbox" class="custom-control-input" id="customCheck1" >
+					  <label class="custom-control-label" for="customCheck1">Monthly</label>
+					</div>
+					<div class="custom-control custom-checkbox">
+					  <input type="checkbox" class="custom-control-input" id="customCheck1" >
+					  <label class="custom-control-label" for="customCheck1">Yearly</label>
+					</div><br>
+
 				<div class="form-group">
-					<input class="form-control" type="number" id="phone" placeholder="Phone Number">
+					<h5>Services</h5>
+					<textarea class="form-control" id="description" placeholder="What services do you expect in return from the client?" rows="6"></textarea>	
 				</div>
-				<div class="form-group">
-					<textarea class="form-control" id="goal" placeholder="What are you looking for?"></textarea>
-				</div>
-				<div class="form-group">
-					<textarea class="form-control" id="description" placeholder="Description"></textarea>	
-				</div>
-				<div class="form-group">
-					<textarea class="form-control" id="dealType" placeholder="What type of ad-space/deal are you looking for?"></textarea>
-				</div>
+				
 				<button type="button" class="btn btn-info" style="padding:10px">Submit</button>
 			</div>
 		</div>
