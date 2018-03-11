@@ -33,6 +33,7 @@ app.set('trust proxy', 1) // trust first proxy
 var index_hbs = compile_handlebars('index');
 var signup_hbs = compile_handlebars('signup');
 var login_hbs = compile_handlebars('login');
+var user_hbs = compile_handlebars('user');
 
 // -------------- express listener -------------- //
 
@@ -54,6 +55,11 @@ app.get('/login', function (req, res, next) {
 app.get('/signup', function (req, res, next) {
     render_signup(req, res);
 });
+
+app.get('/user', function (req, res, next) {
+    render_user(req, res);
+});
+
 
 // -------------- render helper -------------- //
 function render_index(req, res) {
@@ -77,6 +83,13 @@ function render_login(req, res) {
     res.send(htmlOutputString);    
 }
 
+function render_user(req, res) {
+    var context = {  };
+
+    var htmlOutputString = user_hbs.run(context);
+    res.send(htmlOutputString);    
+}
+
 // -------------- handlebars functions -------------- //
 function compile_handlebars(f_name) {
     template = {};
@@ -92,6 +105,7 @@ function read_file_sync(f_name) {
 
 io.on('connection',function(socket){
     socket.on("signup_user", function(data){
+        
         firebase.auth().createUserWithEmailAndPassword(data.email, data.password).catch(function(error) {
           // Handle Errors here.
           var errorCode = error.code;
@@ -123,6 +137,3 @@ io.on('connection',function(socket){
         socket.emit("done_login", {});
     });
 })
-
-
-app.use(express.static(__dirname + '/'));

@@ -76,7 +76,7 @@
         });
          var socket = io.connect('http://localhost:5000', { path:''});
 	      function signUp() {
-	      	 socket.emit("signup_user", {email: document.getElementById("exampleInputEmail1").value, password: document.getElementById("exampleInputPassword1").value, isSponsor: false});
+	      	 socket.emit("signup_user", {email: document.getElementById("exampleInputEmail1").value, password: document.getElementById("exampleInputPassword1").value, isSponsor: document.getElementById("optionsRadios1").checked});
 	      }
 	      socket.on("done_signUp", function(data) {
 	    	window.location.href = "http://localhost:5000/";
