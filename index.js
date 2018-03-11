@@ -45,15 +45,7 @@ var listener = server.listen(app.get('port'), function() {
 // -------------- express getters -------------- //
 
 app.get('/', function (req, res, next) {
-  var user = firebase.auth().currentUser;
-
-  if (user) {
-    render_index(req, res, "display:none;");
-    console.log("Loggedin")
-  } else {
-    render_index(req, res, "");
-    console.log("Loggedut")
-  }
+    render_index(req, res);
 });
 
 // -------------- intermediary login helper -------------- //
@@ -75,7 +67,7 @@ app.get('/form', function (req, res, next) {
 
 // -------------- render helper -------------- //
 function render_index(req, res, display_log) {
-    var context = {display_login:display_log};
+    var context = {};
 
     var htmlOutputString = index_hbs.run(context);
     res.send(htmlOutputString);    
