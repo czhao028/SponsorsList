@@ -324,16 +324,16 @@ io.on('connection',function(socket) {
             snapshot.forEach(function (child) {
                 socket.emit("newEventAdded", {
                     file: '<div class="card border-primary mb-3" style="max-width: 40rem;" padding = "10px">\
-        <div class="card-header">Event</div>\
-        <div class="card-body">\
-          <h4 class="card-title">'+child.val().name+'</h4>\
-          <p id = "card-cost" class = "card-cost">'+child.val().goal+'</p>\
-          <p id = "card-payment_method" class = "card-payment_method">'+child.val().dealType+'</p> \
-          <p id = "card-text" class="card-text">'+child.val().description+'</p>\
-          <button type="button" class="btn btn-success" onclick = "match(`'+child.val().submitter+'`)">Match</button>\
-              <button type="button" class="btn btn-danger" onclick = "reject()">Reject</button>\
-        </div>\
-      </div>'
+                            <div class="card-header">'+child.val().category+'</div>\
+                            <div class="card-body">\
+                              <h4 class="card-title">'+child.val().name+'</h4>\
+                              <p id = "card-cost" class = "card-cost">Cost: $'+child.val().cost+'</p>\
+                              <p id = "card-payment_method" class = "card-payment_method">Contribution Freququency: '+child.val().frequency+'</p> \
+                              <p id = "card-text" class="card-text">'+child.val().description+'</p>\
+                              <button type="button" class="btn btn-success" onclick = "match(`'+child.val().submitter+'`)">Match</button>\
+                                  <button type="button" class="btn btn-danger" onclick = "reject()">Reject</button>\
+                            </div>\
+                          </div>'
                 });
             });
         });
