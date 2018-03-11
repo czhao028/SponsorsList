@@ -14,14 +14,17 @@
 		var socket = io.connect('http://localhost:5000', { path:''});
 	      function signout() {
 	      	 socket.emit("signout", {});
+	      	 setTimeout(function(){
+            window.location.href = "http://localhost:5000/";
+        }, 2000);
 	      }
-	      socket.on("done_signout", function(data) {
-	    	window.location.href = "http://localhost:5000/";
-	    	});
+	      function goToForm() {
+	      	window.location.href = "http://localhost:5000/form";
+	      }
 	</script>
 	<div style={{client_show}}>
 		 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="client_view.html">SponsorsList</a>
+    <a class="navbar-brand" onclick="goToIndex()">SponsorsList</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation" style="">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -38,23 +41,20 @@
   </nav>
   <div class="card border-dark mb-3" style="width:80%; display:block; margin:0 auto; margin-top: 5%;">
     <div class="card-header" style="padding-bottom: 3%"></div>
-    <h1 class="card-title" style="text-align: center; padding-top: 3%">Welcome Joseph!</h1>
+    <h1 class="card-title" style="text-align: center; padding-top: 3%">Welcome!</h1>
     <div class="card-text" style="padding-bottom: 4%">
       <h3 class="user_type_label text-info" style="text-align: center;">Client</h3>
       <h2 class="sponsor_notification" style="text-align: center;">You have <a href="#">0</a> sponsor matches</h2>
       <div class="container navigation_box" style="text-align: center;">
         <div class="row" style="width: 100%;">
           <div class="col-sm">
-            <a href="#" id="applyButton">Apply</a>
+            <a href="#" id="applyButton" onclick="goToForm();">Apply</a>
           </div>
           <div class="col-sm">
             <a href="#" id="appButton">My Applications</a>
           </div>
           <div class="col-sm">
-            <a href="#" id="matchButton">Matches</a>
-          </div>
-          <div class="col-sm">
-            <a href="#" id="chatButton">Chat</a>
+            <a href="#" id="matchButton" onclick="goToSearch()">Matches</a>
           </div>
       </div>
     </div>
@@ -64,6 +64,9 @@
 <p class="description" id="desc_info" style="text-align: center; margin: 0 auto; width: 100%"></p>
 
 <script type="text/javascript">
+	function goToIndex() {
+		window.location.href = "http://localhost:5000/";
+	}
   $("#applyButton").hover(
     function() {
       document.getElementById("desc_info").innerHTML="Apply to find potential sponsors!";
@@ -85,13 +88,6 @@
       document.getElementById("desc_info").innerHTML="";
     }
   );
-  $("#chatButton").hover(
-    function() {
-      document.getElementById("desc_info").innerHTML="Chat with a Sponsor!";
-    }, function() {
-      document.getElementById("desc_info").innerHTML="";
-    }
-  );
 </script>
 <script type="text/javascript">
   sr.reveal('div');
@@ -100,65 +96,73 @@
 
 	<div style={{sponsor_show}}>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	  <a class="navbar-brand" href="#">Dashboard</a>
-	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation" style="">
-	    <span class="navbar-toggler-icon"></span>
-	  </button>
+    <a class="navbar-brand" onclick="goToIndex();">SponsorsList</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation" style="">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-	  <div class="collapse navbar-collapse" id="navbarColor02">
-	    <ul class="navbar-nav ml-auto">
-	      
-	     <ul class="navbar-nav mr-auto">
-			  
-			  <li class="nav-item">
-			    <a class="nav-link" href="#" onclick="signout()">Logout</a>
-			  </li>
-	    </ul>
-	    
-	  </div>
-	</nav>
-	<center id="list">
-	<!--
-		<div class="card border-primary mb-3" style="max-width: 40rem;" padding = "10px">
-		  <div class="card-header">Event</div>
-		  <div class="card-body">
-		    <h4 class="card-title">Hack TJ</h4>
-		    <p id = "card-cost" class = "card-cost"> $1000.00 </p>
-		    <p id = "card-payment_method" class = "card-payment_method">One time</p> 
-		    <p id = "card-text" class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-		    <button type="button" class="btn btn-success" onclick = "match()">Match</button>
-            <button type="button" class="btn btn-danger" onclick = "reject()">Reject</button>
-		  </div>
-		</div>
-		<div class="card border-primary mb-3" style="max-width: 40rem;" padding = "10px">
-		  <div class="card-header">School Club</div>
-		  <div class="card-body">
-		    <h4 class="card-title">TJ Ethics Bowl</h4>
-		    <p id = "card-cost" class = "card-cost"> $100.00 </p>
-		    <p id = "card-payment_method" class = "card-payment_method">monthly</p> 
-		    <p id = "card-text" class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-		    <button type="button" class="btn btn-success" onclick = "match()">Match</button>
-            <button type="button" class="btn btn-danger" onclick = "reject()">Reject</button>
-		  </div>
-		</div>--> 
-	</center>
+    <div class="collapse navbar-collapse" id="navbarColor02">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#" onclick="signout();">Logout <span class="sr-only">(current)</span></a>
+        </li>
+        <!--PLEASE CHANGE THIS TO CHECK LOGOUT STATUS AND LOGOUT-->
+        
+      </ul>
+    </div>
+  </nav>
+  <div class="card border-dark mb-3" style="width:80%; display:block; margin:0 auto; margin-top: 5%;">
+    <div class="card-header" style="padding-bottom: 3%"></div>
+    <h1 class="card-title" style="text-align: center; padding-top: 3%">Welcome!</h1>
+    <div class="card-text" style="padding-bottom: 4%">
+      <h3 class="user_type_label text-info" style="text-align: center;">Sponsor</h3>
+      <h2 class="sponsor_notification" style="text-align: center;">You have <a href="#">0</a> client matches</h2>
+      <div class="container navigation_box" style="text-align: center;">
+        <div class="row" style="width: 100%;">
+          <div class="col-sm">
+            <a href="#" id="searchButton" style="text-align: center;" onclick="goToSearch()">Search</a>
+          </div>
+          <div class="col-sm">
+            <a href="#" id="requestsButton" style="text-align: center;">Requests</a>
+          </div>
+          <div class="col-sm">
+            <a href="#" id="matchButton" style="text-align: center;">Matches</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script>
-	function match(client_company, sponsor_company){
-		socket.emit("match", {data: [client_company, sponsor_company]})
-	}
-	function reject(){
-		//do something
-	}
-	function getCards() {
-		socket.emit("getEvents", {});
-	}
-	var socket = io.connect('http://localhost:5000', { path:''});
-         socket.on("newEventAdded", function(data) {
-	    	document.getElementById("list").innerHTML += data.file;
-	    	});
-	getCards();
-</script>
+<p class="description" id="desc_info" style="text-align: center; margin: 0 auto; width: 100%"></p>
+
 	</div>
+	<script type="text/javascript">
+  $("#searchButton").hover(
+    function() {
+      document.getElementById("desc_info").innerHTML="Search for potential clients!!";
+    }, function() {
+      document.getElementById("desc_info").innerHTML="";
+    }
+  );
+  $("#requestsButton").hover(
+    function() {
+      document.getElementById("desc_info").innerHTML="Check out clients who have requested your sponsorship!";
+    }, function() {
+      document.getElementById("desc_info").innerHTML="";
+    }
+  );
+  $("#matchButton").hover(
+    function() {
+      document.getElementById("desc_info").innerHTML="Browse through Sponsors that matched with you!";
+    }, function() {
+      document.getElementById("desc_info").innerHTML="";
+    }
+  );
+  function goToSearch() {
+          window.location.href = "http://localhost:5000/searchCard";
+        }
+</script>
+<script type="text/javascript">
+  sr.reveal('div');
+</script>
 </body>

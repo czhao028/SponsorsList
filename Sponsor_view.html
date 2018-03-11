@@ -20,65 +20,6 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-<<<<<<< HEAD
-	  <div class="collapse navbar-collapse" id="navbarColor02">
-	    <ul class="navbar-nav ml-auto">
-	      
-	     <ul class="navbar-nav mr-auto">
-			  
-			  <li class="nav-item">
-			    <a class="nav-link" href="#">Logout</a>
-			  </li>
-	    </ul>
-	    
-	  </div>
-	</nav>
-<<<<<<< HEAD
-	<
-	<center><!--
-=======
-	
-	<center>
->>>>>>> 3884ac6beb44388a59dafe02276f483deaadae8b
-		<div class="card border-primary mb-3" style="max-width: 40rem;" padding = "10px">
-		  <div class="card-header">Event</div>
-		  <div class="card-body">
-		    <h4 class="card-title">Hack TJ</h4>
-		    <p id = "card-cost" class = "card-cost"> $1000.00 </p>
-		    <p id = "card-payment_method" class = "card-payment_method">One time</p> 
-		    <p id = "card-text" class="card-text">HackTJ is an event that reaches over 500 people annually, with students coming in all across the country...</p>
-		    <button type="button" class="btn btn-success" onclick = "match()">Match</button>
-            <button type="button" class="btn btn-danger" onclick = "reject()">Reject</button>
-		  </div>
-		</div>
-		<div class="card border-primary mb-3" style="max-width: 40rem;" padding = "10px">
-		  <div class="card-header">School Club</div>
-		  <div class="card-body">
-		    <h4 class="card-title">TJ Ethics Bowl</h4>
-		    <p id = "card-cost" class = "card-cost"> $100.00 </p>
-		    <p id = "card-payment_method" class = "card-payment_method">monthly</p> 
-		    <p id = "card-text" class="card-text">A group that values ethics at TJ. Also a meme...</p>
-		    <button type="button" class="btn btn-success" onclick = "match()">Match</button>
-            <button type="button" class="btn btn-danger" onclick = "reject()">Reject</button>
-		  </div>
-		</div>
-		-->
-	</center>
-	
-</body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script>
-	function appendCard(category, company, cost, card-payment_method, text, sponsor){
-		var card = '<div class="card border-primary mb-3" style="max-width: 40rem;" padding = "10px"> <div class="card-header">'+ category+'</div> <div class="card-body"> <h4 class="card-title">'+company+'</h4> <p id = "card-cost" class = "card-cost">'+cost+'</p> <p id = "card-payment_method" class = "card-payment_method">'+card-payment_method+'</p> <p id = "card-text" class="card-text">'+text+'</p><button type="button" class="btn btn-success" onclick = "match('+company+','+sponsor+')">Match</button><button type="button" class="btn btn-danger" onclick = "reject()">Reject</button></div></div>';
-		$("body").append(card);
-	}
-	function match(client_company, sponsor_company){
-		socket.emit("match", {data: [client_company, sponsor_company]})
-	}
-	function reject(){
-		//do something
-	}
-=======
     <div class="collapse navbar-collapse" id="navbarColor02">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
@@ -115,7 +56,6 @@
 </div>
 
 <p class="description" id="desc_info" style="text-align: center; margin: 0 auto; width: 100%"></p>
->>>>>>> aeace4118446357ce2c381bcbf503d490edd1c93
 
 </body>
 <script type="text/javascript">

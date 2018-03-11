@@ -37,7 +37,7 @@ var signup_hbs = compile_handlebars('signup');
 var login_hbs = compile_handlebars('login');
 var form_hbs = compile_handlebars('form');
 var dashboard_hbs = compile_handlebars('dashboard');
-
+var searchCard_hbs = compile_handlebars('searchCard')
 // -------------- express listener -------------- //
 
 var listener = server.listen(app.get('port'), function() {
@@ -67,6 +67,25 @@ return firebase.database().ref('/users/' + userId).once('value').then(function(s
 // -------------- intermediary login helper -------------- //
 app.get('/login', function (req, res, next) {
     render_login(req, res);
+});
+
+app.get('/searchCard', function (req, res, next) {
+     var user = firebase.auth().currentUser;
+
+    if (user) {
+      var userId = firebase.auth().currentUser.uid;
+return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
+  var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
+  if(snapshot.val().isSponsor) {
+    render_search(req, res, "display:none", "");
+  }
+  else {
+      render_search(req, res, "", "display:none");
+  }
+});
+    } else {
+      render_search(req, res, "display:none", "display:none");
+    }
 });
 
 app.get('/signup', function (req, res, next) {
@@ -150,6 +169,15 @@ function render_form(req, res, client, sponsor) {
     res.send(htmlOutputString);    
 }
 
+function render_search(req, res, client, sponsor) {
+    var context = {client_show: client,
+                   sponsor_show: sponsor };
+
+    var htmlOutputString = searchCard_hbs.run(context);
+    res.send(htmlOutputString);    
+}
+
+
 // -------------- handlebars functions -------------- //
 function compile_handlebars(f_name) {
     template = {};
@@ -212,22 +240,47 @@ io.on('connection',function(socket){
 
     });
 
-    socket.on("submit_event", function(data) {
+    socket.on("submit_request", function(data) {
       var user = firebase.auth().currentUser;
-      firebase.database().ref('/events/'+data.name).set({
+      firebase.database().ref('/requests/'+data.name).set({
           name: data.name,
-          location: data.location,
-          number: data.phone_number,
-          goal: data.goal,
+          category: data.category,
+          frequency: data.frequency,
+          cost: data.cost,
           description: data.description,
-          dealType: data.dealType,
+          service: data.service,
+          outreach: data.outreach,
+          education: data.education,
+          gaming: data.gaming,
+          technology: data.technology,
+          submitter: user.uid
+        });
+      socket.emit("submitted", {});
+    });
+
+    socket.on("submit_sponsor", function(data) {
+      var user = firebase.auth().currentUser;
+      firebase.database().ref('/sponsors/'+user.uid).set({
+          service: data.service,
+          outreach: data.outreach,
+          education: data.education,
+          gaming: data.gaming,
+          technology: data.technology,
+          phone: data.phone,
+          maxBudget: data.maxBudget,
+          description: data.description,
+          once: data.once,
+          weekly: data.weekly,
+          biweekly: data.biweekly,
+          monthly: data.weekly,
+          yearly: data.yearly,
           submitter: user.uid
         });
       socket.emit("submitted", {});
     });
 
     socket.on("getEvents", function(data) {
-        var rootRef = firebase.database().ref("events/");
+        var rootRef = firebase.database().ref("requests/");
         rootRef.once("value", function(snapshot) {
           snapshot.forEach(function(child) {
             socket.emit("newEventAdded", {file:'<div class="card border-primary mb-3" style="max-width: 40rem;" padding = "10px">\
