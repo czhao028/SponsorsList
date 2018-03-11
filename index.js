@@ -174,6 +174,7 @@ var index_hbs = compile_handlebars('index');
 var signup_hbs = compile_handlebars('signup');
 var login_hbs = compile_handlebars('login');
 var user_hbs = compile_handlebars('user');
+var form_hbs = compile_handlebars('form');
 
 // -------------- express listener -------------- //
 
@@ -184,7 +185,15 @@ var listener = server.listen(app.get('port'), function() {
 // -------------- express getters -------------- //
 
 app.get('/', function (req, res, next) {
-    render_index(req, res);
+  var user = firebase.auth().currentUser;
+
+  if (user) {
+    render_index(req, res, "display:none;");
+    console.log("Loggedin")
+  } else {
+    render_index(req, res, "");
+    console.log("Loggedut")
+  }
 });
 
 // -------------- intermediary login helper -------------- //
@@ -200,10 +209,13 @@ app.get('/user', function (req, res, next) {
     render_user(req, res);
 });
 
+app.get('/form', function (req, res, next) {
+    render_form(req, res);
+});
 
 // -------------- render helper -------------- //
-function render_index(req, res) {
-    var context = {};
+function render_index(req, res, display_log) {
+    var context = {display_login:display_log};
 
     var htmlOutputString = index_hbs.run(context);
     res.send(htmlOutputString);    
@@ -227,6 +239,13 @@ function render_user(req, res) {
     var context = {  };
 
     var htmlOutputString = user_hbs.run(context);
+    res.send(htmlOutputString);    
+}
+
+function render_form(req, res) {
+    var context = {  };
+
+    var htmlOutputString = form_hbs.run(context);
     res.send(htmlOutputString);    
 }
 
