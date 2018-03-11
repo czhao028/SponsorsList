@@ -10,7 +10,7 @@
 	</head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	  <a class="navbar-brand" href="#">SponsorList //click here to go home</a>
+	  <a class="navbar-brand" href="sponser_view.html">SponsorList</a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation" style="">
 	    <span class="navbar-toggler-icon"></span>
 	  </button>
@@ -28,25 +28,33 @@
 	  </div>
 	</nav>
 	
-	<center>
-		<div class="form-group">
-			<input class="form-control" type="text" id="companyName" placeholder="Company Name">
+	<div class="container topSpacing">
+		<div class="row">
+			<div class="col-sm-3"></div>
+			<div class="col-sm-6 center-block">
+				<div class="form-group">
+					<input class="form-control" type="text" id="companyName" placeholder="Company Name">
+				</div>
+				<div class="form-group">
+					<input class="form-control" type="text" id="location" placeholder="Location">
+				</div>
+				<div class="form-group">
+					<input class="form-control" type="number" id="phone" placeholder="Phone Number">
+				</div>
+				<div class="form-group">
+					<textarea class="form-control" id="goal" placeholder="What are you looking for?"></textarea>
+				</div>
+				<div class="form-group">
+					<textarea class="form-control" id="description" placeholder="Description"></textarea>	
+				</div>
+				<div class="form-group">
+					<textarea class="form-control" id="dealType" placeholder="What type of ad-space/deal are you looking for?"></textarea>
+				</div>
+				<button type="button" class="btn btn-info" style="padding:10px">Submit</button>
+			</div>
 		</div>
-		<div class="form-group">
-			<input class="form-control" type="text" id="location" placeholder="Location">
-		</div>
-		<div class="form-group">
-			<input class="form-control" type="number" id="phone" placeholder="Phone Number">
-		</div>
-		<div class="form-group">
-			<textarea class="form-control" id="goal" placeholder="What are you looking for?"></textarea>
-		</div>
-		<div class="form-group">
-			<textarea class="form-control" id="description" placeholder="Description"></textarea>	
-		</div>
-		<div class="form-group">
-			<textarea class="form-control" id="dealType" placeholder="What type of ad-space/deal are you looking for?"></textarea>
-		</div>
+	</div>
+
 		<!-- <div class="form-group", padding = "10px", width = "75vw">
 	      <label for="category">Select category</label>
 	      <select class="form-control" id="category">
@@ -57,15 +65,19 @@
 	        <option>5</option>
 	      </select>
 	    </div> -->
-		<button type="button" class="btn btn-info" padding = "10px">Submit</button>
-	</center>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script>
-		function match(){
-			//do something
-		}
-		function reject(){
-			//do something
-		}
-	</script>
-</body>
+		</body>
+<style>
+/*body{
+	width: 50%;
+	padding: 0;
+	margin: 0;
+} */
+.topSpacing{
+    padding-top: 60px;
+  }
+  @media (max-width: 980px) {
+    body {
+      padding-top: 0;
+    }
+  }
+</style>

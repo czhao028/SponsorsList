@@ -28,47 +28,89 @@
 	  </div>
 	</nav>
 	<!--category, company, cost, card-payment_method, text-->
-	<div class="col-sm-3">
-	</div>
-	<div class="col-sm-6">
-	 	<div class="form-group", padding = "10px", width = "75vw">
-	      <h5>Select Category</h5>
-	      <select class="form-control" id="category" >
-	        <option>School Club</option>
-	        <option>Event</option>
-	        <option>3</option>
-	        <option>4</option>
-	        <option>5</option>
-	      </select>
-	    </div>
-	    <div class = "outer">
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Company" id="inputCompany">
-			</div>
+	<div class="container topSpacing">
+		<h1 style="text-align: center">Apply for Sponsorship</h1><br>
+		<div class="row">
+			<div class="col-sm-3"></div>
+			<div class="col-sm-6 center-block">
+			 	<div class="form-group">
+			      <h5>Select Category</h5>
+			      <select class="form-control" id="category" >
+			        <option>Business</option>
+			        <option>Events</option>
+			        <option>Clubs</option>
+			      </select>
+			    </div>
+				<div class="form-group">
+					<h5>Select Causes</h5>
+					<div class="custom-control custom-checkbox">
+					  <input type="checkbox" class="custom-control-input" id="customCheck1">
+					  <label class="custom-control-label" for="customCheck1">Community Service</label>
+					</div>
+					<div class="custom-control custom-checkbox">
+					  <input type="checkbox" class="custom-control-input" id="customCheck1">
+					  <label class="custom-control-label" for="customCheck1">Outreach</label>
+					</div>
+					<div class="custom-control custom-checkbox">
+					  <input type="checkbox" class="custom-control-input" id="customCheck1" >
+					  <label class="custom-control-label" for="customCheck1">Education</label>
+					</div>
+					<div class="custom-control custom-checkbox">
+					  <input type="checkbox" class="custom-control-input" id="customCheck1" >
+					  <label class="custom-control-label" for="customCheck1">Technology</label>
+					</div>
+					<div class="custom-control custom-checkbox">
+					  <input type="checkbox" class="custom-control-input" id="customCheck1" >
+					  <label class="custom-control-label" for="customCheck1">Gaming</label>
+					</div>
+				</div>
 
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Description" id="inputDescription">
-			</div>
+			    <div class = "outer">
+					<div class="form-group">
+						<h5>Company</h5>
+						<input type="text" class="form-control" id="inputCompany">
+					</div>
 
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Cost" id="inputCost">
-			</div>
+					<div class="form-group">
+						<h5>Frequency of Payments</h5>
+				      	<select class="form-control" id="category" >
+				        	<option>One-time</option>
+				        	<option>Weekly</option>
+				        	<option>Bi-weekly</option>
+				        	<option>Monthly</option>
+				        	<option>Yearly</option>
+				     	 </select>
+					</div>
 
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Payment method" id="inputMethod">
-			</div>
+					<div class="form-group">
+						<h5>Cost</h5>
+						<input type="text" class="form-control" id="inputCost" placeholder="per payment">
+					</div>
 
-			<div class="form-group">
-	      		<textarea placeholder="Description" rows="4" cols="40" class="form-control"></textarea>
-			</div>
-			<button type="button" class="btn btn-info" padding = "10px">Submit</button>
+					
+
+					<div class="form-group">
+						<h5>Proposal</h5>
+			      		<textarea placeholder="Write a proposal detailing where the money will be used, the impact of the entire project, projected reach (#), and your means of promoting sponsors' companies. This should be around 300-500 words." rows="17" cols="40" class="form-control"></textarea>
+					</div>
+					<button type="button" class="btn btn-info" style="padding:10px">Submit</button>
+				</div>
+			</div>	
 		</div>
-	</div>	
+	</div>
 </body>
 <style>
-body: {
+/*body{
 	width: 50%;
 	padding: 0;
 	margin: 0;
-} 
+} */
+.topSpacing{
+    padding-top: 60px;
+  }
+  @media (max-width: 980px) {
+    body {
+      padding-top: 0;
+    }
+  }
 </style>
