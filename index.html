@@ -1,5 +1,5 @@
-<<<<<<< HEAD
-<html>
+
+<!--<html>
   <body>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>    
     <script>
@@ -11,12 +11,9 @@
          socket.emit("login_user", {email: "thejykoder@gmail.com", password: "TKDgamer1"});
       }
     </script>
-    <input type="text" id="valueEntered">
-    <input type="button" value="Sign Up" onclick="signup_user();">
-    <input type="button" value="Login" onclick="login_user();">
-    <h1 id="answer"></h1>
-  </body>
-=======
+   
+  </body>-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,26 +26,25 @@
 	<script src="jquery-3.3.1.min.js"></script>
 	<script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
 	<script type="text/javascript">
-		window.sr = ScrollReveal();
+		window.sr = ScrollReveal({duration:2500});
 	</script> 
     <title>SponsorsList</title>
 </head>
-<body>
+<body style="height: 100%;">
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="index.html">SponsorsList</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation" style="">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+		<a class="navbar-brand" href="index.html">SponsorsList</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation" style="">
+		<span class="navbar-toggler-icon"></span></button>
 
-  <div class="collapse navbar-collapse" id="navbarColor02">
-    <ul class="navbar-nav ml-auto">
-		  <li class="nav-item">
-		    <a class="nav-link" href="signup.html">Signup</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" href="login.html">Login</a>
-		  </li>
-    </ul>
+	  <div class="collapse navbar-collapse" id="navbarColor02">
+	    <ul class="navbar-nav ml-auto">
+			  <li class="nav-item">
+			    <a class="nav-link" href="signup.html">Signup</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link" href="login.html">Login</a>
+			  </li>
+	    </ul>
 	</div>
 	</nav>
 	<div class="jumbotron" style="text-align: center">
@@ -90,12 +86,22 @@
 	  </div>
 	</div>	
 
+	<div class="card">
+	  <div class="card-body">
+	    <h4 class="card-title">Card title</h4>
+	    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+	    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+	    <a href="#" class="card-link">Card link</a>
+	    <a href="#" class="card-link">Another link</a>
+	 	</div>
+	</div>	
+
 	<!--SCRIPT HERE-->
 	<script type="text/javascript">
-		sr.reveal('jumbotron');
-		sr.reveal('navbar navbar-expand-lg navbar-dark bg-dark');
-		sr.reveal('card mb-3');
+		sr.reveal('div');
+		sr.reveal('ul');
 	</script>
+
 </body>
->>>>>>> fdb3f52c639bbc283f0793d9e50afa2724984573
+
 </html>
