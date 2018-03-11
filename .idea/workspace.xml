@@ -2,8 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e84a51d8-bbf3-4846-acc9-ab5e2d32d77f" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/client my applications.html" afterPath="$PROJECT_DIR$/client my applications.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/blah.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/dashboard.hbs" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/searchCard.hbs" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/searchCards.hbs" />
+      <change beforePath="$PROJECT_DIR$/Sponsor_view.html" afterPath="$PROJECT_DIR$/Sponsor_view.html" />
+      <change beforePath="$PROJECT_DIR$/form.hbs" afterPath="$PROJECT_DIR$/form.hbs" />
+      <change beforePath="$PROJECT_DIR$/index.hbs" afterPath="$PROJECT_DIR$/index.hbs" />
       <change beforePath="$PROJECT_DIR$/index.js" afterPath="$PROJECT_DIR$/index.js" />
+      <change beforePath="$PROJECT_DIR$/login.hbs" afterPath="$PROJECT_DIR$/login.hbs" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -36,17 +43,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2025">
-              <caret line="178" column="33" lean-forward="true" selection-start-line="178" selection-start-column="33" selection-end-line="178" selection-end-column="33" />
-              <folding />
+            <state relative-caret-position="348">
+              <caret line="263" column="40" lean-forward="true" selection-start-line="263" selection-start-column="40" selection-end-line="263" selection-end-column="40" />
+              <folding>
+                <marker date="1520771999381" expanded="true" signature="9064:9081" ph="..." />
+                <marker date="1520771999381" expanded="true" signature="9099:9731" ph="..." />
+                <marker date="1520771999381" expanded="true" signature="9178:9717" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="client my applications.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="client my applications.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client my applications.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="338">
@@ -78,8 +89,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/login.html" />
-        <option value="$PROJECT_DIR$/index.js" />
         <option value="$PROJECT_DIR$/client my applications.html" />
+        <option value="$PROJECT_DIR$/index.js" />
       </list>
     </option>
   </component>
@@ -238,19 +249,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2025">
-          <caret line="178" column="33" lean-forward="true" selection-start-line="178" selection-start-column="33" selection-end-line="178" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client my applications.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="338">
           <caret line="45" column="39" lean-forward="false" selection-start-line="45" selection-start-column="39" selection-end-line="45" selection-end-column="39" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="263" column="40" lean-forward="true" selection-start-line="263" selection-start-column="40" selection-end-line="263" selection-end-column="40" />
+          <folding>
+            <marker date="1520771999381" expanded="true" signature="9064:9081" ph="..." />
+            <marker date="1520771999381" expanded="true" signature="9099:9731" ph="..." />
+            <marker date="1520771999381" expanded="true" signature="9178:9717" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
