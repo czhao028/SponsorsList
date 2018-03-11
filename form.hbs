@@ -14,61 +14,131 @@
 		var socket = io.connect('http://localhost:5000', { path:''});
 	      function signout() {
 	      	 socket.emit("signout", {});
+	      	 setTimeout(function(){
+            window.location.href = "http://localhost:5000/";
+        }, 2000);
 	      }
-	      socket.on("done_signout", function(data) {
-	    	window.location.href = "http://localhost:5000/";
-	    	});
 	</script>
 	<div style={{sponsor_show}}>
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		  <a class="navbar-brand" href="#">SponsorList //click here to go home</a>
-		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation" style="">
-		    <span class="navbar-toggler-icon"></span>
-		  </button>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	  <a class="navbar-brand" href="sponser_view.html">SponsorList</a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation" style="">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
 
-		  <div class="collapse navbar-collapse" id="navbarColor02">
-		    <ul class="navbar-nav ml-auto">
-		      
-		     <ul class="navbar-nav mr-auto">
-				  
-				  <li class="nav-item">
-				    <a class="nav-link" href="#" onclick="signout()">Logout</a>
-				  </li>
-		    </ul>
-		    
-		  </div>
-		</nav>
-		
-		<center>
-			<input type="text" id="companyName" placeholder="Company Name">
-			<input type="text" id="location" placeholder="Location">
-			<input type="number" id="phone" placeholder="Phone Number">
-			<textarea id="goal" placeholder="What are you looking for?"></textarea>
-			<textarea id="ideology" placeholder="Ideology"></textarea>	
-			<textarea id="ideology" placeholder="What type of ad-space/deal are you looking for?"></textarea>
-			<div class="form-group", padding = "10px", width = "75vw">
-		      <label for="category">Select category</label>
-		      <select class="form-control" id="category">
-		        <option>School Club</option>
-		        <option>Event</option>
-		        <option>3</option>
-		        <option>4</option>
-		        <option>5</option>
-		      </select>
-		    </div>
-			<button onclick="form()">Submit</button>
-		</center>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<script>
-			function match(){
-				//do something
-			}
-			function reject(){
-				//do something
-			}
-		</script>
+	  <div class="collapse navbar-collapse" id="navbarColor02">
+	    <ul class="navbar-nav ml-auto">
+	      
+	     <ul class="navbar-nav mr-auto">
+			  
+			  <li class="nav-item">
+			    <a class="nav-link" href="#" onclick="signout()">Logout</a>
+			  </li>
+	    </ul>
+	    
+	  </div>
+	</nav>
+	
+	<div class="container topSpacing">
+		<div class="row">
+			<div class="col-sm-3"></div>
+			<div class="col-sm-6 center-block">
+				<h1 style="text-align: center">Search for Clients</h1><br>
+				<div class="form-group">
+					<h5>Select Causes</h5>
+					<div class="custom-control custom-checkbox">
+					  <input type="checkbox" class="custom-control-input" id="sponsorCheck1">
+					  <label class="custom-control-label" for="sponsorCheck1">Community Service</label>
+					</div>
+					<div class="custom-control custom-checkbox">
+					  <input type="checkbox" class="custom-control-input" id="sponsorCheck2">
+					  <label class="custom-control-label" for="sponsorCheck2">Outreach</label>
+					</div>
+					<div class="custom-control custom-checkbox">
+					  <input type="checkbox" class="custom-control-input" id="sponsorCheck3" >
+					  <label class="custom-control-label" for="sponsorCheck3">Education</label>
+					</div>
+					<div class="custom-control custom-checkbox">
+					  <input type="checkbox" class="custom-control-input" id="sponsorCheck4" >
+					  <label class="custom-control-label" for="sponsorCheck4">Technology</label>
+					</div>
+					<div class="custom-control custom-checkbox">
+					  <input type="checkbox" class="custom-control-input" id="sponsorCheck5" >
+					  <label class="custom-control-label" for="sponsorCheck5">Gaming</label>
+					</div>
+				</div>
+				<h5>Phone Number</h5>
+				<div class="form-group">
+					<input class="form-control" type="tel" name="usrtel" id="phone">
+				</div>
+				<div class="form-group">
+					<h5>Maximum Budget</h5>
+					<input class="form-control" type="number" id="goal" placeholder="USD (digits only)"></input>
+				</div>
+
+				<h5>Select Causes</h5>
+					<div class="custom-control custom-checkbox">
+					  <input type="checkbox" class="custom-control-input" id="customCheck1">
+					  <label class="custom-control-label" for="customCheck1">One-time</label>
+					</div>
+					<div class="custom-control custom-checkbox">
+					  <input type="checkbox" class="custom-control-input" id="customCheck2">
+					  <label class="custom-control-label" for="customCheck1">Weekly</label>
+					</div>
+					<div class="custom-control custom-checkbox">
+					  <input type="checkbox" class="custom-control-input" id="customCheck3" >
+					  <label class="custom-control-label" for="customCheck1">Bi-weekly</label>
+					</div>
+					<div class="custom-control custom-checkbox">
+					  <input type="checkbox" class="custom-control-input" id="customCheck4" >
+					  <label class="custom-control-label" for="customCheck1">Monthly</label>
+					</div>
+					<div class="custom-control custom-checkbox">
+					  <input type="checkbox" class="custom-control-input" id="customCheck5" >
+					  <label class="custom-control-label" for="customCheck1">Yearly</label>
+					</div><br>
+
+				<div class="form-group">
+					<h5>Services</h5>
+					<textarea class="form-control" id="descriptionSponsor" placeholder="What services do you expect in return from the client?" rows="6"></textarea>	
+				</div>
+				
+				<button type="button" class="btn btn-info" style="padding:10px" onclick="submitSponsor();">Submit</button>
+			</div>
+		</div>
 	</div>
 
+	</div>
+	<style>
+/*body{
+	width: 50%;
+	padding: 0;
+	margin: 0;
+} */
+.topSpacing{
+    padding-top: 60px;
+  }
+  @media (max-width: 980px) {
+    body {
+      padding-top: 0;
+    }
+  }
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+		var socket = io.connect('http://localhost:5000', { path:''});
+		function submitRequest() {
+         	socket.emit("submit_request", {name: document.getElementById("inputCompany").value, category: document.getElementById("typeOfCategory").value, frequency: document.getElementById("frequency").value, description: document.getElementById("description").value, cost: document.getElementById("inputCost").value, service: document.getElementById("clientCheck1").checked, outreach: document.getElementById("clientCheck2").checked, education: document.getElementById("clientCheck3").checked, technology: document.getElementById("clientCheck4").checked, gaming: document.getElementById("clientCheck5").checked});
+		}
+		function submitSponsor() {
+			socket.emit("submit_sponsor", {service: document.getElementById("sponsorCheck1").checked, outreach: document.getElementById("sponsorCheck2").checked, education: document.getElementById("sponsorCheck3").checked, technology: document.getElementById("sponsorCheck4").checked, gaming: document.getElementById("sponsorCheck5").checked, phone: document.getElementById("phone").value, maxBudget: document.getElementById("goal").value, once: document.getElementById("customCheck1").checked, weekly: document.getElementById("customCheck2").checked, biweekly: document.getElementById("customCheck3").checked, monthly: document.getElementById("customCheck4").checked, yearly: document.getElementById("customCheck5").checked, description: document.getElementById("descriptionSponsor")})
+		}
+		socket.on("submitted", function(data) {
+	    	window.location.href = "http://localhost:5000/";
+	    	});
+
+	</script>
 	<div style={{client_show}}>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 	  <a class="navbar-brand" href="#">Dashboard</a>
@@ -89,38 +159,90 @@
 	  </div>
 	</nav>
 	<!--category, company, cost, card-payment_method, text-->
-	 <div class="form-group", padding = "10px", width = "75vw">
-      <label for="category">Select category</label>
-      <select class="form-control" id="category">
-        <option>School Club</option>
-        <option>Event</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-      </select>
-    </div>
-    <div width = "50%">
-		<div class="form-group">
-			<input type="text" class="form-control" placeholder="Company" id="inputCompany">
-		</div>
+	<div class="container topSpacing">
+		<h1 style="text-align: center">Apply for Sponsorship</h1><br>
+		<div class="row">
+			<div class="col-sm-3"></div>
+			<div class="col-sm-6 center-block">
+			 	<div class="form-group">
+			      <h5>Select Category</h5>
+			      <select class="form-control" id="typeOfCategory" >
+			        <option>Business</option>
+			        <option>Events</option>
+			        <option>Clubs</option>
+			      </select>
+			    </div>
+				<div class="form-group">
+					<h5>Select Causes</h5>
+					<div class="custom-control custom-checkbox">
+					  <input type="checkbox" class="custom-control-input" id="clientCheck1">
+					  <label class="custom-control-label" for="clientCheck1">Community Service</label>
+					</div>
+					<div class="custom-control custom-checkbox">
+					  <input type="checkbox" class="custom-control-input" id="clientCheck2">
+					  <label class="custom-control-label" for="clientCheck2">Outreach</label>
+					</div>
+					<div class="custom-control custom-checkbox">
+					  <input type="checkbox" class="custom-control-input" id="clientCheck3" >
+					  <label class="custom-control-label" for="clientCheck3">Education</label>
+					</div>
+					<div class="custom-control custom-checkbox">
+					  <input type="checkbox" class="custom-control-input" id="clientCheck4" >
+					  <label class="custom-control-label" for="clientCheck4">Technology</label>
+					</div>
+					<div class="custom-control custom-checkbox">
+					  <input type="checkbox" class="custom-control-input" id="clientCheck5" >
+					  <label class="custom-control-label" for="clientCheck5">Gaming</label>
+					</div>
+				</div>
 
-		<div class="form-group">
-			<input type="text" class="form-control" placeholder="Description" id="inputDescription">
-		</div>
+			    <div class = "outer">
+					<div class="form-group">
+						<h5>Company</h5>
+						<input type="text" class="form-control" id="inputCompany">
+					</div>
 
-		<div class="form-group">
-			<input type="text" class="form-control" placeholder="Cost" id="inputCost">
-		</div>
+					<div class="form-group">
+						<h5>Frequency of Payments</h5>
+				      	<select class="form-control" id="frequency" >
+				        	<option>One-time</option>
+				        	<option>Weekly</option>
+				        	<option>Bi-weekly</option>
+				        	<option>Monthly</option>
+				        	<option>Yearly</option>
+				     	 </select>
+					</div>
 
-		<div class="form-group">
-			<input type="text" class="form-control" placeholder="Payment method" id="inputMethod">
-		</div>
-		<button onclick="form()">Submit</button>
+					<div class="form-group">
+						<h5>Cost</h5>
+						<input type="text" class="form-control" id="inputCost" placeholder="per payment">
+					</div>
 
-		<div class="form-group">
-	      <label for="exampleTextarea">Example textarea</label>
-	      <grammarly-ghost spellcheck="false"><div data-id="3c668a24-6df2-90dd-1fb7-84ddd6240e7a" data-gramm_id="3c668a24-6df2-90dd-1fb7-84ddd6240e7a" data-gramm="gramm" data-gramm_editor="true" class="gr_ver_2" gramm="true" contenteditable="true" style="position: absolute; color: transparent; overflow: hidden; white-space: pre-wrap; border-radius: 0px; box-sizing: border-box; height: 88.4px; width: 540px; margin: 581px 0px 0px; padding: 12px 32px; z-index: 0; border-width: 1px; border-style: solid; background: none 0% 0% / auto repeat scroll padding-box padding-box rgb(247, 247, 249); top: 0px; left: 0px;"><span style="display: inline-block; line-height: 21px; color: transparent; overflow: hidden; text-align: left; float: initial; clear: none; box-sizing: border-box; vertical-align: baseline; white-space: pre-wrap; width: 100%; margin: 0px; padding: 0px; border: 0px; font-style: normal; font-variant: normal; font-weight: 400; font-stretch: normal; font-size: 14px; font-family: &quot;Nunito Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; letter-spacing: normal; text-shadow: none; height: 86px;"></span><br></div></grammarly-ghost><textarea class="form-control" id="inputText" rows="3" data-gramm="true" data-txt_gramm_id="3c668a24-6df2-90dd-1fb7-84ddd6240e7a" data-gramm_id="3c668a24-6df2-90dd-1fb7-84ddd6240e7a" spellcheck="false" data-gramm_editor="true" style="z-index: auto; position: relative; line-height: 21px; font-size: 14px; transition: none; background: transparent !important;"></textarea><grammarly-btn><div class="_1BN1N Kzi1t _2DJZN" style="z-index: 2; transform: translate(509px, 638.8px);"><div class="_1HjH7"><div title="Protected by Grammarly" class="_3qe6h">&nbsp;</div></div></div></grammarly-btn>
-	    </div>
+					
+
+					<div class="form-group">
+						<h5>Proposal</h5>
+			      		<textarea placeholder="Write a proposal detailing where the money will be used, the impact of the entire project, projected reach (#), and your means of promoting sponsors' companies. This should be around 300-500 words." rows="17" cols="40" class="form-control" id="description"></textarea>
+					</div>
+					<button type="button" class="btn btn-info" style="padding:10px" onclick="submitRequest()">Submit</button>
+				</div>
+			</div>	
+		</div>
 	</div>
-	</div>
+		</div>
+		<style>
+/*body{
+	width: 50%;
+	padding: 0;
+	margin: 0;
+} */
+.topSpacing{
+    padding-top: 60px;
+  }
+  @media (max-width: 980px) {
+    body {
+      padding-top: 0;
+    }
+  }
+</style>
 </body>

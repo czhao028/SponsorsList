@@ -25,6 +25,7 @@
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 	<script src="jquery-3.3.1.min.js"></script>
 	<script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
 	<script type="text/javascript">
 		window.sr = ScrollReveal({duration:2500});
 	</script> 
@@ -135,6 +136,10 @@
          $("#logo_link").click(function(){
              window.location.href = "http://localhost:5000/";
         });
+         var socket = io.connect('http://localhost:5000', { path:''});
+         socket.on("redirect_to_dashboard", function(data) {
+	    	window.location.href = "http://localhost:5000/dashboard";
+	    	});
 	</script>
 
 </body>
