@@ -11,6 +11,7 @@
 	<script type="text/javascript">
 		window.sr = ScrollReveal({duration:2500});
 	</script> 
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
     <title>Client my application</title>
 </head>
 <body>
@@ -33,30 +34,21 @@
 	  </div>
 	</nav>
 	<h1 style="text-align: center; padding-top: 5%"> Your Information </h1>
-	<div id = "info" style="display: block; margin: 0 auto; padding: 10px;"></div>
+	<div id = "info" style="display: block; margin: 0 auto; padding: 10px; text-align: center"></div>
 
 	<script type="text/javascript">
-		function returnMatches(){
-			//firebase stuff
-			return {myInfo:[
-					{
-						typeName:"Event",
-						name:"HackTJ",
-						cost:1000.00,
-						termLength: "One-time",
-						description:"HackTJ is an event that reaches over 500 people annually, with students coming in all across the country..."
-					}
+		var socket = io.connect('http://localhost:5000');
+		socket.on("userInfoReceived", function(data){
+			var theName = data.name;
+			var theEmail = data.email;
+			var theIsSponsor = data.isSponsor;
+			var information = document.getElementbyId("info");
+			info.innerHTML = "<h3>Welcome back " + theName + "!</h3><br>";
+			info.innerHTML = (isSponsor)?"Sponsor":"Client" + " Account"
+			info.innerHTML += "Email: " + theEmail + "<br> ";
 
-				]
-			}
-		}
-		var allMatchesDiv = document.getElementById('info');
-		allMatchesDiv.innerHTML = "";
-		var allCurly = returnMatches().myInfo;
-		for (var pointer in allCurly){
-			nodeEvent = allCurly[pointer];
-			allMatchesDiv.innerHTML += '<div class="card text-white bg-success mb-3" style="max-width: 40rem; text-align:center; display:block; margin: 0 auto;"><div class="card-header">'+nodeEvent.typeName+'</div><div class="card-body"><a href = "#"><h2 class="card-title" style="color:#eeeeee">'+nodeEvent.name+'</h2></a><p id = "card-cost" class = "card-cost">$'+nodeEvent.cost+' ('+nodeEvent.termLength+')</p><p id = "card-text" class="card-text">'+nodeEvent.description+'</p></div>'; 
-		}
+
+		});
 
 	</script>
 </body>
