@@ -21,14 +21,14 @@ var config = {
 };
 firebase.initializeApp(config);
 
-process.env.PWD = process.cwd()
+process.env.PWD = process.cwd();
 
 // -------------- express initialization -------------- //
 
 // PORT SETUP
 app.set('port', process.env.PORT || 5000 );
 // SO THAT EXPRESS KNOWS IT IS SITTING BEHIND A PROXY
-app.set('trust proxy', 1) // trust first proxy 
+app.set('trust proxy', 1); // trust first proxy
 
 // -------------- variable initialization -------------- //
 // handlebars compiled 
@@ -175,7 +175,7 @@ io.on('connection',function(socket){
     });
     socket.on("getUserInfo", function(data){
         var user = firebase.auth().currentUser;
-        var myname = user.displayName;
+        var myname = user.uid;
         var myemail = user.email;
         var myisSponsor = user.isSponsor;
         socket.emit("userInfoReceived", {name:myname, email:myemail, isSponsor:myisSponsor});
