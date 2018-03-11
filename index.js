@@ -240,6 +240,7 @@ io.on('connection',function(socket) {
 
     });
 
+
     socket.on("getUserInfo", function (data) {
         var user = firebase.auth().currentUser;
         var myname = user.uid;
@@ -249,20 +250,21 @@ io.on('connection',function(socket) {
     });
 
 
-    socket.on("submit_request", function (data) {
-        var user = firebase.auth().currentUser;
-        firebase.database().ref('/requests/' + data.name).set({
-            name: data.name,
-            category: data.category,
-            frequency: data.frequency,
-            cost: data.cost,
-            description: data.description,
-            service: data.service,
-            outreach: data.outreach,
-            education: data.education,
-            gaming: data.gaming,
-            technology: data.technology,
-            submitter: user.uid
+    socket.on("submit_request", function(data) {
+      var user = firebase.auth().currentUser;
+      firebase.database().ref('/requests/'+data.name).set({
+          name: data.name,
+          category: data.category,
+          frequency: data.frequency,
+          cost: data.cost,
+          description: data.description,
+          service: data.service,
+          outreach: data.outreach,
+          education: data.education,
+          gaming: data.gaming,
+          technology: data.technology,
+          submitter: user.uid,
+          matches: data.matches
         });
         socket.emit("submitted", {});
     });
@@ -307,6 +309,23 @@ io.on('connection',function(socket) {
                 });
             });
         });
+    // socket.on("match", function(data){
+    //   var user = firebase.auth().currentUser;
+    //   var clientId = data.data[0];
+    //   console.log("user id: "+ user.uid)
+    //   console.log("clientId: " + clientId);
+    //   firebase.database().ref('/match/'+user.uid).set({
+    //     id:clientId
+    //   })
+    //   firebase.database().ref('/match/'+clientId).set({
+    //     id:user.uid
+    //   })
+    //   firebase.database().ref('/match/null').once('value').then(function(snapshot){
+    //     console.log("snapshot id: " + snapshot.val())
+    //   })
+        
+    // })
+
 
         /*<div class="card border-primary mb-3" style="max-width: 40rem;" padding = "10px">
           <div class="card-header">Event</div>
@@ -319,6 +338,19 @@ io.on('connection',function(socket) {
                 <button type="button" class="btn btn-danger" onclick = "reject()">Reject</button>
           </div>
         </div>*/
+
+    // Attach a listener to read the data at our posts reference
+      /*<div class="card border-primary mb-3" style="max-width: 40rem;" padding = "10px">
+        <div class="card-header">Event</div>
+        <div class="card-body">
+          <h4 class="card-title">Hack TJ</h4>
+          <p id = "card-cost" class = "card-cost"> $1000.00 </p>
+          <p id = "card-payment_method" class = "card-payment_method">One time</p> 
+          <p id = "card-text" class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <button type="button" class="btn btn-success" onclick = "match()">Match</button>
+              <button type="button" class="btn btn-danger" onclick = "reject()">Reject</button>
+        </div>
+      </div>*/
     });
 });
 app.use(express.static(process.env.PWD + '/'));
