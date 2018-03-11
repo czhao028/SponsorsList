@@ -1,3 +1,22 @@
+<<<<<<< HEAD
+<html>
+  <body>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>    
+    <script>
+      var socket = io.connect('http://localhost:5000', { path:''});
+      function signup_user() {
+      	 socket.emit("signup_user", {email: "thejykoder@gmail.com", password: "TKDgamer1", isCompany: false, name: "HackTJ"});
+      }
+      function login_user() {
+         socket.emit("login_user", {email: "thejykoder@gmail.com", password: "TKDgamer1"});
+      }
+    </script>
+    <input type="text" id="valueEntered">
+    <input type="button" value="Sign Up" onclick="signup_user();">
+    <input type="button" value="Login" onclick="login_user();">
+    <h1 id="answer"></h1>
+  </body>
+=======
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -78,4 +97,5 @@
 		sr.reveal('card mb-3');
 	</script>
 </body>
+>>>>>>> fdb3f52c639bbc283f0793d9e50afa2724984573
 </html>

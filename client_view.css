@@ -1,0 +1,38 @@
+body {
+	font-size: 16px;
+	width: 100%;
+	margin: 0;
+	border: 0;
+}
+
+.user_type_label {
+	text-align: center;
+	font-size: 1em;
+}
+
+.welcome_message {
+	text-align: center;
+	margin-top: 1em;
+	font-size: 2em;
+}
+
+.footer_menu {
+	width: 100%;
+	height: 10vh;
+}
+
+.sponsor_notification {
+	text-align: center;
+	margin-top: 1em;
+	font-size: 1.5em;
+}
+
+.navigation_box {
+	text-align: center;
+	margin-top: 3em;
+	width: 100%;
+}
+
+.description{
+	margin-top: 3em;
+}
