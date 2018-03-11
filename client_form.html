@@ -28,47 +28,58 @@
 	  </div>
 	</nav>
 	<!--category, company, cost, card-payment_method, text-->
-	<div class="col-sm-3">
-	</div>
-	<div class="col-sm-6">
-	 	<div class="form-group", padding = "10px", width = "75vw">
-	      <h5>Select Category</h5>
-	      <select class="form-control" id="category" >
-	        <option>School Club</option>
-	        <option>Event</option>
-	        <option>3</option>
-	        <option>4</option>
-	        <option>5</option>
-	      </select>
-	    </div>
-	    <div class = "outer">
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Company" id="inputCompany">
-			</div>
+	<div class="container topSpacing">
+		<div class="row">
+			<div class="col-sm-3"></div>
+			<div class="col-sm-6 center-block">
+			 	<div class="form-group">
+			      <h5>Select Category</h5>
+			      <select class="form-control" id="category" >
+			        <option>School Club</option>
+			        <option>Event</option>
+			        <option>3</option>
+			        <option>4</option>
+			        <option>5</option>
+			      </select>
+			    </div>
+			    <div class = "outer">
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Company" id="inputCompany">
+					</div>
 
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Description" id="inputDescription">
-			</div>
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Description" id="inputDescription">
+					</div>
 
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Cost" id="inputCost">
-			</div>
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Cost" id="inputCost">
+					</div>
 
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Payment method" id="inputMethod">
-			</div>
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Payment method" id="inputMethod">
+					</div>
 
-			<div class="form-group">
-	      		<textarea placeholder="Description" rows="4" cols="40" class="form-control"></textarea>
-			</div>
-			<button type="button" class="btn btn-info" padding = "10px">Submit</button>
+					<div class="form-group">
+			      		<textarea placeholder="Description" rows="4" cols="40" class="form-control"></textarea>
+					</div>
+					<button type="button" class="btn btn-info" style="padding:10px">Submit</button>
+				</div>
+			</div>	
 		</div>
-	</div>	
+	</div>
 </body>
 <style>
-body: {
+/*body{
 	width: 50%;
 	padding: 0;
 	margin: 0;
-} 
+} */
+.topSpacing{
+    padding-top: 60px;
+  }
+  @media (max-width: 980px) {
+    body {
+      padding-top: 0;
+    }
+  }
 </style>
