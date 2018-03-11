@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <!--<html>
   <body>
@@ -114,3 +115,121 @@
 </body>
 
 </html>
+=======
+
+<!--<html>
+  <body>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>    
+    <script>
+      var socket = io.connect('http://localhost:5000', { path:''});
+      function signup_user() {
+      	 socket.emit("signup_user", {email: "thejykoder@gmail.com", password: "TKDgamer1", isCompany: false, name: "HackTJ"});
+      }
+      function login_user() {
+         socket.emit("login_user", {email: "thejykoder@gmail.com", password: "TKDgamer1"});
+      }
+    </script>
+   
+  </body>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+	<script src="jquery-3.3.1.min.js"></script>
+	<script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+	<script type="text/javascript">
+		window.sr = ScrollReveal({duration:2500});
+	</script> 
+    <title>SponsorsList</title>
+</head>
+<body style="height: 100%;">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="#" id="logo_link">SponsorsList</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation" style="">
+		<span class="navbar-toggler-icon"></span></button>
+
+	  <div class="collapse navbar-collapse" id="navbarColor02">
+	    <ul class="navbar-nav ml-auto">
+			  <li class="nav-item">
+		    <a class="nav-link" href="#" id="signup_link">Signup</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" href="#" id="login_link">Login</a>
+		  </li>
+	    </ul>
+	</div>
+	</nav>
+	<div class="jumbotron" style="text-align: center">
+	  <h1 class="display-3">SponsorsList</h1>
+	  <p class="lead">A seamless, simple way to connect sponsors to clients that need it the most.</p>
+	  <hr class="my-4">
+	</div>
+
+	<div class="card mb-3">
+	  <h3 class="card-header">Card header</h3>
+	  <div class="card-body">
+	    <h5 class="card-title">Special title treatment</h5>
+	    <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+	  </div>
+	  <img style="height: 200px; width: 100%; display: block;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22318%22%20height%3D%22180%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20318%20180%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_158bd1d28ef%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A16pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_158bd1d28ef%22%3E%3Crect%20width%3D%22318%22%20height%3D%22180%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22129.359375%22%20y%3D%2297.35%22%3EImage%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Card image">
+	  <div class="card-body">
+	    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+	  </div>
+	  <ul class="list-group list-group-flush">
+	    <li class="list-group-item">Cras justo odio</li>
+	    <li class="list-group-item">Dapibus ac facilisis in</li>
+	    <li class="list-group-item">Vestibulum at eros</li>
+	  </ul>
+	  <div class="card-body">
+	    <a href="#" class="card-link">Card link</a>
+	    <a href="#" class="card-link">Another link</a>
+	  </div>
+	  <div class="card-footer text-muted">
+	    2 days ago
+	  </div>
+	</div>
+	<div class="card">
+	  <div class="card-body">
+	    <h4 class="card-title">Card title</h4>
+	    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+	    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+	    <a href="#" class="card-link">Card link</a>
+	    <a href="#" class="card-link">Another link</a>
+	  </div>
+	</div>	
+
+	<div class="card">
+	  <div class="card-body">
+	    <h4 class="card-title">Card title</h4>
+	    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+	    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+	    <a href="#" class="card-link">Card link</a>
+	    <a href="#" class="card-link">Another link</a>
+	 	</div>
+	</div>	
+
+	<!--SCRIPT HERE-->
+	<script type="text/javascript">
+		sr.reveal('div');
+		sr.reveal('ul');
+		$("#signup_link").click(function(){
+                window.location.href = "http://localhost:5000/signup";
+         });
+         $("#login_link").click(function(){
+             window.location.href = "http://localhost:5000/login";
+        });
+         $("#logo_link").click(function(){
+             window.location.href = "http://localhost:5000/";
+        });
+	</script>
+
+</body>
+
+</html>
+>>>>>>> dd7b0b4e36f9486b57f14b52e4b9b03dae82fc03
