@@ -21,6 +21,8 @@ var config = {
 };
 firebase.initializeApp(config);
 
+process.env.PWD = process.cwd()
+
 // -------------- express initialization -------------- //
 
 // PORT SETUP
@@ -172,3 +174,5 @@ io.on('connection',function(socket){
 
     });
 })
+
+app.use(express.static(process.env.PWD + '/'));

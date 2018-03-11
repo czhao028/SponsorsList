@@ -1,3 +1,4 @@
+
 <!--<html>
   <body>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>    
@@ -30,11 +31,12 @@
     <title>SponsorsList</title>
 </head>
 <body style="height: 100%;">
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<a class="navbar-brand" href="#" id="logo_link">SponsorsList</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation" style="">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark primary">
+		<a class="navbar-brand" href="index.html">SponsorsList</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor0" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation" style="">
 		<span class="navbar-toggler-icon"></span></button>
-	  <div class="collapse navbar-collapse"  id="navbarColor02">
+
+	  <div class="collapse navbar-collapse" id="navbarColor01">
 	    <ul class="navbar-nav ml-auto">
 			  <li class="nav-item">
 		    <a class="nav-link" href="#" id="signup_link">Signup</a>
@@ -52,52 +54,78 @@
 	</div>
 
 	<div class="card mb-3">
-	  <h3 class="card-header">Card header</h3>
+	  
 	  <div class="card-body">
-	    <h5 class="card-title">Special title treatment</h5>
-	    <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+	    <h1 style="text-align: center">Find Sponsors</h1>
+	 
 	  </div>
-	  <img style="height: 200px; width: 100%; display: block;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22318%22%20height%3D%22180%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20318%20180%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_158bd1d28ef%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A16pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_158bd1d28ef%22%3E%3Crect%20width%3D%22318%22%20height%3D%22180%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22129.359375%22%20y%3D%2297.35%22%3EImage%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Card image">
+	  <img style="height: 100%; width: 100%; display: block; margin:0 auto" src="images/dashboard.png" alt="Card image">
 	  <div class="card-body">
-	    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+	    <p class=" brown lighten-1" style="text-align: center; color:#7283a7">Shown: Simple client dashboard that allows you to immediately view the information you need.</p>
 	  </div>
-	  <ul class="list-group list-group-flush">
-	    <li class="list-group-item">Cras justo odio</li>
-	    <li class="list-group-item">Dapibus ac facilisis in</li>
-	    <li class="list-group-item">Vestibulum at eros</li>
-	  </ul>
-	  <div class="card-body">
-	    <a href="#" class="card-link">Card link</a>
-	    <a href="#" class="card-link">Another link</a>
-	  </div>
-	  <div class="card-footer text-muted">
-	    2 days ago
-	  </div>
+		  
+	  
 	</div>
-	<div class="card">
+	<table id = "imagesContainer"  width="100%" style="text-align: center;">
+			<tr>
+				<td style="width:33.3%"><img src = 'images/1.png' style="margin: 0 auto; display:block; max-height: 250px; height:auto;"></td>
+				<td style="width:33.3%"><img src = 'images/2.png' style="margin: 0 auto; display:block; max-height: 250px; height:auto;"></td>
+				<td style="width:33.3%"><img src = 'images/3.png' style="margin: 0 auto; display:block; max-height: 250px; height:auto;"></td>
+			</tr>
+
+			<tr>
+				<td><h2 style="display:block; text-align: center;"> Sign Up</h2>
+				<p style="text-align: center">Register for an exclusive client account.</p></td>
+				<td><h2 style="display:block; text-align: center;"> Apply</h2>
+				<p style="text-align: center">Fill out an all-inclusive application with your project requirements and impact.</p></td>
+				<td><h2 style="display:block; text-align: center;"> Get Matched</h2>
+				<p style="text-align: center">Our service matches you up to sponsors who want to support your cause.</p>
+				</div></td>
+			</tr>
+			
+	</table>
+	<div class="card mb-3">
 	  <div class="card-body">
-	    <h4 class="card-title">Card title</h4>
-	    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-	    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-	    <a href="#" class="card-link">Card link</a>
-	    <a href="#" class="card-link">Another link</a>
+	    <h1 style="text-align: center">Find Clients</h1>
+	  </div>
+	<img style="height: 100%; width: 70%; display: block; margin:0 auto" src="images/sponsorview.png" alt="Card image">
+	  <div class="card-body">
+	    <p class=" brown lighten-1" style="text-align: center; color:#7283a7">Shown: Portal provides you numerous options for business sponsorship that perfectly suits your selected criteria.</p>
+	  </div>
+
+	  <table id = "imagesContainer" width="100%" style="text-align: center;">
+			<tr>
+				<td style="width:33.3%"><img src = 'http://localhost:5000/images/1.png' style="margin: 0 auto; display:block; max-height: 250px; height:auto;"></td>
+				<td style="width:33.3%"><img src = 'images/wishlist.png' style="margin: 0 auto; display:block; max-height: 250px; height:auto;"></td>
+				<td style="width:33.3%"><img src = 'images/exchange.png' style="margin: 0 auto; display:block; max-height: 250px; height:auto;"></td>
+			</tr>
+
+			<tr>
+				<td><h2 style="display:block; text-align: center;"> Sign Up</h2>
+				<p style="text-align: center">Register for an exclusive sponsor account. This'll give you the most appropriate premium experience</p></td>
+				<td><h2 style="display:block; text-align: center;"> Wishlist</h2>
+				<p style="text-align: center">Include everything you want in the perfect club, project, event, or organization to sponsor: cause, category, and your projected budget.</p></td>
+				<td><h2 style="display:block; text-align: center;"> Get Matched</h2>
+				<p style="text-align: center">Our service matches you up to clients who need your help, to clients that will best serve your publicity goals.</p>
+				</div></td>
+			</tr>
+	</table>
+	</div>
+	<div class="card text-white bg-dark mb-3" style="width: 50%; display: block; margin: 0 auto;">
+	  <div class="card-header" style="text-align: center;">Get Started Today</div>
+	  <div class="card-body">
+	    <h5 class="card-title" style="text-align: center">Join us today for our free sponsorship service</h4>
+	   <div id="centerButtons" style="text-align: center">
+	   		Sign up or login with your email address in the top right corner.
+	   </div>
+	   
 	  </div>
 	</div>	
-
-	<div class="card">
-	  <div class="card-body">
-	    <h4 class="card-title">Card title</h4>
-	    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-	    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-	    <a href="#" class="card-link">Card link</a>
-	    <a href="#" class="card-link">Another link</a>
-	 	</div>
-	</div>	
-
 	<!--SCRIPT HERE-->
 	<script type="text/javascript">
 		sr.reveal('div');
 		sr.reveal('ul');
+		sr.reveal('td');
 		$("#signup_link").click(function(){
                 window.location.href = "http://localhost:5000/signup";
          });
