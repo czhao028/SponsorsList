@@ -211,6 +211,51 @@ io.on('connection',function(socket){
       });
 
     });
+
+    socket.on("submit_event", function(data) {
+      var user = firebase.auth().currentUser;
+      firebase.database().ref('/events/'+data.name).set({
+          name: data.name,
+          location: data.location,
+          number: data.phone_number,
+          goal: data.goal,
+          description: data.description,
+          dealType: data.dealType,
+          submitter: user.uid
+        });
+      socket.emit("submitted", {});
+    });
+
+    socket.on("getEvents", function(data) {
+        var rootRef = firebase.database().ref("events/");
+        rootRef.once("value", function(snapshot) {
+          snapshot.forEach(function(child) {
+            socket.emit("newEventAdded", {file:'<div class="card border-primary mb-3" style="max-width: 40rem;" padding = "10px">\
+        <div class="card-header">Event</div>\
+        <div class="card-body">\
+          <h4 class="card-title">'+child.val().name+'</h4>\
+          <p id = "card-cost" class = "card-cost">'+child.val().goal+'</p>\
+          <p id = "card-payment_method" class = "card-payment_method">'+child.val().dealType+'</p> \
+          <p id = "card-text" class="card-text">'+child.val().description+'</p>\
+          <button type="button" class="btn btn-success" onclick = "match()">Match</button>\
+              <button type="button" class="btn btn-danger" onclick = "reject()">Reject</button>\
+        </div>\
+      </div>'});
+          });
+        });
+
+      /*<div class="card border-primary mb-3" style="max-width: 40rem;" padding = "10px">
+        <div class="card-header">Event</div>
+        <div class="card-body">
+          <h4 class="card-title">Hack TJ</h4>
+          <p id = "card-cost" class = "card-cost"> $1000.00 </p>
+          <p id = "card-payment_method" class = "card-payment_method">One time</p> 
+          <p id = "card-text" class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <button type="button" class="btn btn-success" onclick = "match()">Match</button>
+              <button type="button" class="btn btn-danger" onclick = "reject()">Reject</button>
+        </div>
+      </div>*/
+    });
 })
 
 app.use(express.static(process.env.PWD + '/'));

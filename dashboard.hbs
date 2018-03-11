@@ -40,9 +40,9 @@
     <div class="card-header" style="padding-bottom: 3%"></div>
     <h1 class="card-title" style="text-align: center; padding-top: 3%">Welcome Joseph!</h1>
     <div class="card-text" style="padding-bottom: 4%">
-      <h3 class="user_type_label text-info">Client</h3>
-      <h2 class="sponsor_notification">You have <a href="#">0</a> sponsor matches</h2>
-      <div class="container navigation_box">
+      <h3 class="user_type_label text-info" style="text-align: center;">Client</h3>
+      <h2 class="sponsor_notification" style="text-align: center;">You have <a href="#">0</a> sponsor matches</h2>
+      <div class="container navigation_box" style="text-align: center;">
         <div class="row" style="width: 100%;">
           <div class="col-sm">
             <a href="#" id="applyButton">Apply</a>
@@ -117,8 +117,8 @@
 	    
 	  </div>
 	</nav>
-	<
-	<center>
+	<center id="list">
+	<!--
 		<div class="card border-primary mb-3" style="max-width: 40rem;" padding = "10px">
 		  <div class="card-header">Event</div>
 		  <div class="card-body">
@@ -140,22 +140,25 @@
 		    <button type="button" class="btn btn-success" onclick = "match()">Match</button>
             <button type="button" class="btn btn-danger" onclick = "reject()">Reject</button>
 		  </div>
-		</div>
+		</div>--> 
 	</center>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
-	function appendCard(category, company, cost, card-payment_method, text, sponsor){
-		var card = '<div class="card border-primary mb-3" style="max-width: 40rem;" padding = "10px"> <div class="card-header">'+ category+'</div> <div class="card-body"> <h4 class="card-title">'+company+'</h4> <p id = "card-cost" class = "card-cost">'+cost+'</p> <p id = "card-payment_method" class = "card-payment_method">'+card-payment_method+'</p> <p id = "card-text" class="card-text">'+text+'</p><button type="button" class="btn btn-success" onclick = "match('+company+','+sponsor+')">Match</button><button type="button" class="btn btn-danger" onclick = "reject()">Reject</button></div></div>';
-		$("body").append(card);
-	}
 	function match(client_company, sponsor_company){
 		socket.emit("match", {data: [client_company, sponsor_company]})
 	}
 	function reject(){
 		//do something
 	}
-
+	function getCards() {
+		socket.emit("getEvents", {});
+	}
+	var socket = io.connect('http://localhost:5000', { path:''});
+         socket.on("newEventAdded", function(data) {
+	    	document.getElementById("list").innerHTML += data.file;
+	    	});
+	getCards();
 </script>
 	</div>
 </body>

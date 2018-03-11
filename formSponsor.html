@@ -29,13 +29,25 @@
 	</nav>
 	
 	<center>
-		<input type="text" id="companyName" placeholder="Company Name">
-		<input type="text" id="location" placeholder="Location">
-		<input type="number" id="phone" placeholder="Phone Number">
-		<textarea id="goal" placeholder="What are you looking for?"></textarea>
-		<textarea id="ideology" placeholder="Ideology"></textarea>	
-		<textarea id="ideology" placeholder="What type of ad-space/deal are you looking for?"></textarea>
-		<div class="form-group", padding = "10px", width = "75vw">
+		<div class="form-group">
+			<input class="form-control" type="text" id="companyName" placeholder="Company Name">
+		</div>
+		<div class="form-group">
+			<input class="form-control" type="text" id="location" placeholder="Location">
+		</div>
+		<div class="form-group">
+			<input class="form-control" type="number" id="phone" placeholder="Phone Number">
+		</div>
+		<div class="form-group">
+			<textarea class="form-control" id="goal" placeholder="What are you looking for?"></textarea>
+		</div>
+		<div class="form-group">
+			<textarea class="form-control" id="description" placeholder="Description"></textarea>	
+		</div>
+		<div class="form-group">
+			<textarea class="form-control" id="dealType" placeholder="What type of ad-space/deal are you looking for?"></textarea>
+		</div>
+		<!-- <div class="form-group", padding = "10px", width = "75vw">
 	      <label for="category">Select category</label>
 	      <select class="form-control" id="category">
 	        <option>School Club</option>
@@ -44,8 +56,8 @@
 	        <option>4</option>
 	        <option>5</option>
 	      </select>
-	    </div>
-		<button onclick="form()">Submit</button>
+	    </div> -->
+		<button type="button" class="btn btn-info" padding = "10px">Submit</button>
 	</center>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script>

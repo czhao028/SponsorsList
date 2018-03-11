@@ -21,54 +21,58 @@
 	</script>
 	<div style={{sponsor_show}}>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		  <a class="navbar-brand" href="#">SponsorList //click here to go home</a>
-		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation" style="">
-		    <span class="navbar-toggler-icon"></span>
-		  </button>
+	  <a class="navbar-brand" href="#">SponsorList //click here to go home</a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation" style="">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
 
-		  <div class="collapse navbar-collapse" id="navbarColor02">
-		    <ul class="navbar-nav ml-auto">
-		      
-		     <ul class="navbar-nav mr-auto">
-				  
-				  <li class="nav-item">
-				    <a class="nav-link" href="#" onclick="signout()">Logout</a>
-				  </li>
-		    </ul>
-		    
-		  </div>
-		</nav>
-		
-		<center>
-			<input type="text" id="companyName" placeholder="Company Name">
-			<input type="text" id="location" placeholder="Location">
-			<input type="number" id="phone" placeholder="Phone Number">
-			<textarea id="goal" placeholder="What are you looking for?"></textarea>
-			<textarea id="ideology" placeholder="Ideology"></textarea>	
-			<textarea id="ideology" placeholder="What type of ad-space/deal are you looking for?"></textarea>
-			<div class="form-group", padding = "10px", width = "75vw">
-		      <label for="category">Select category</label>
-		      <select class="form-control" id="category">
-		        <option>School Club</option>
-		        <option>Event</option>
-		        <option>3</option>
-		        <option>4</option>
-		        <option>5</option>
-		      </select>
-		    </div>
-			<button onclick="form()">Submit</button>
-		</center>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<script>
-			function match(){
-				//do something
-			}
-			function reject(){
-				//do something
-			}
-		</script>
+	  <div class="collapse navbar-collapse" id="navbarColor02">
+	    <ul class="navbar-nav ml-auto">
+	      
+	     <ul class="navbar-nav mr-auto">
+			  
+			  <li class="nav-item">
+			    <a class="nav-link" href="#">Logout</a>
+			  </li>
+	    </ul>
+	    
+	  </div>
+	</nav>
+	
+	<center>
+		<div class="form-group">
+			<input class="form-control" type="text" id="companyName" placeholder="Company Name">
+		</div>
+		<div class="form-group">
+			<input class="form-control" type="text" id="location" placeholder="Location">
+		</div>
+		<div class="form-group">
+			<input class="form-control" type="number" id="phone" placeholder="Phone Number">
+		</div>
+		<div class="form-group">
+			<textarea class="form-control" id="goal" placeholder="What are you looking for?"></textarea>
+		</div>
+		<div class="form-group">
+			<textarea class="form-control" id="description" placeholder="Description"></textarea>	
+		</div>
+		<div class="form-group">
+			<textarea class="form-control" id="dealType" placeholder="What type of ad-space/deal are you looking for?"></textarea>
+		</div>
+		<button type="button" class="btn btn-info" padding = "10px" onclick="submitEvent()">Submit</button>
+	</center>
+	
 	</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+		var socket = io.connect('http://localhost:5000', { path:''});
+		function submitEvent() {
+         	socket.emit("submit_event", {name: document.getElementById("companyName").value, location: document.getElementById("location").value, phone_number: document.getElementById("phone").value, goal: document.getElementById("goal").value, description: document.getElementById("description").value, dealType: document.getElementById("dealType").value});
+		}
+		socket.on("submitted", function(data) {
+	    	window.location.href = "http://localhost:5000/";
+	    	});
 
+	</script>
 	<div style={{client_show}}>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 	  <a class="navbar-brand" href="#">Dashboard</a>
@@ -115,7 +119,7 @@
 		<div class="form-group">
 			<input type="text" class="form-control" placeholder="Payment method" id="inputMethod">
 		</div>
-		<button onclick="form()">Submit</button>
+		<button>Submit</button>
 
 		<div class="form-group">
 	      <label for="exampleTextarea">Example textarea</label>

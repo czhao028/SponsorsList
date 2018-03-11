@@ -28,37 +28,47 @@
 	  </div>
 	</nav>
 	<!--category, company, cost, card-payment_method, text-->
-	 <div class="form-group", padding = "10px", width = "75vw">
-      <label for="category">Select category</label>
-      <select class="form-control" id="category">
-        <option>School Club</option>
-        <option>Event</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-      </select>
-    </div>
-    <div class = "outer", width = "50%">
-		<div class="form-group">
-			<input type="text" class="form-control" placeholder="Company" id="inputCompany">
-		</div>
-
-		<div class="form-group">
-			<input type="text" class="form-control" placeholder="Description" id="inputDescription">
-		</div>
-
-		<div class="form-group">
-			<input type="text" class="form-control" placeholder="Cost" id="inputCost">
-		</div>
-
-		<div class="form-group">
-			<input type="text" class="form-control" placeholder="Payment method" id="inputMethod">
-		</div>
-		<button onclick="form()">Submit</button>
-
-		<div class="form-group">
-	      <label for="exampleTextarea">Example textarea</label>
-	      <grammarly-ghost spellcheck="false"><div data-id="3c668a24-6df2-90dd-1fb7-84ddd6240e7a" data-gramm_id="3c668a24-6df2-90dd-1fb7-84ddd6240e7a" data-gramm="gramm" data-gramm_editor="true" class="gr_ver_2" gramm="true" contenteditable="true" style="position: absolute; color: transparent; overflow: hidden; white-space: pre-wrap; border-radius: 0px; box-sizing: border-box; height: 88.4px; width: 540px; margin: 581px 0px 0px; padding: 12px 32px; z-index: 0; border-width: 1px; border-style: solid; background: none 0% 0% / auto repeat scroll padding-box padding-box rgb(247, 247, 249); top: 0px; left: 0px;"><span style="display: inline-block; line-height: 21px; color: transparent; overflow: hidden; text-align: left; float: initial; clear: none; box-sizing: border-box; vertical-align: baseline; white-space: pre-wrap; width: 100%; margin: 0px; padding: 0px; border: 0px; font-style: normal; font-variant: normal; font-weight: 400; font-stretch: normal; font-size: 14px; font-family: &quot;Nunito Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; letter-spacing: normal; text-shadow: none; height: 86px;"></span><br></div></grammarly-ghost><textarea class="form-control" id="inputText" rows="3" data-gramm="true" data-txt_gramm_id="3c668a24-6df2-90dd-1fb7-84ddd6240e7a" data-gramm_id="3c668a24-6df2-90dd-1fb7-84ddd6240e7a" spellcheck="false" data-gramm_editor="true" style="z-index: auto; position: relative; line-height: 21px; font-size: 14px; transition: none; background: transparent !important;"></textarea><grammarly-btn><div class="_1BN1N Kzi1t _2DJZN" style="z-index: 2; transform: translate(509px, 638.8px);"><div class="_1HjH7"><div title="Protected by Grammarly" class="_3qe6h">&nbsp;</div></div></div></grammarly-btn>
-	    </div>
+	<div class="col-sm-3">
 	</div>
+	<div class="col-sm-6">
+	 	<div class="form-group", padding = "10px", width = "75vw">
+	      <h5>Select Category</h5>
+	      <select class="form-control" id="category" >
+	        <option>School Club</option>
+	        <option>Event</option>
+	        <option>3</option>
+	        <option>4</option>
+	        <option>5</option>
+	      </select>
+	    </div>
+	    <div class = "outer">
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Company" id="inputCompany">
+			</div>
+
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Description" id="inputDescription">
+			</div>
+
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Cost" id="inputCost">
+			</div>
+
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Payment method" id="inputMethod">
+			</div>
+
+			<div class="form-group">
+	      		<textarea placeholder="Description" rows="4" cols="40" class="form-control"></textarea>
+			</div>
+			<button type="button" class="btn btn-info" padding = "10px">Submit</button>
+		</div>
+	</div>	
 </body>
+<style>
+body: {
+	width: 50%;
+	padding: 0;
+	margin: 0;
+} 
+</style>
