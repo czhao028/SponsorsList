@@ -98,10 +98,10 @@
       <div class="container navigation_box" style="text-align: center;">
         <div class="row" style="width: 100%;">
           <div class="col-sm">
-            <a href="#" id="applyButton">Apply</a>
+            <a href="#" id="searchButton">Search</a>
           </div>
           <div class="col-sm">
-            <a href="#" id="appButton">My Applications</a>
+            <a href="#" id="requestsButton">Requests</a>
           </div>
           <div class="col-sm">
             <a href="#" id="matchButton">Matches</a>
@@ -119,16 +119,16 @@
 
 </body>
 <script type="text/javascript">
-  $("#applyButton").hover(
+  $("#searchButton").hover(
     function() {
-      document.getElementById("desc_info").innerHTML="Apply to find potential sponsors!";
+      document.getElementById("desc_info").innerHTML="Search for potential clients!!";
     }, function() {
       document.getElementById("desc_info").innerHTML="";
     }
   );
-  $("#appButton").hover(
+  $("#requestsButton").hover(
     function() {
-      document.getElementById("desc_info").innerHTML="Check out your current applications!";
+      document.getElementById("desc_info").innerHTML="Check out clients who have requested your sponsorship!";
     }, function() {
       document.getElementById("desc_info").innerHTML="";
     }
