@@ -18,10 +18,13 @@
             window.location.href = "http://localhost:5000/";
         }, 2000);
 	      }
+	      function goToDashboard() {
+	      	window.location.href = "http://localhost:5000/dashboard";
+	      }
 	</script>
 	<div style={{sponsor_show}}>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	  <a class="navbar-brand" href="sponser_view.html">SponsorList</a>
+	  <a class="navbar-brand" href="#" onclick="goToDashboard();">Dashboard</a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation" style="">
 	    <span class="navbar-toggler-icon"></span>
 	  </button>
@@ -141,7 +144,7 @@
 	</script>
 	<div style={{client_show}}>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	  <a class="navbar-brand" href="#">Dashboard</a>
+	  <a class="navbar-brand" href="#" onclick="goToDashboard()">Dashboard</a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation" style="">
 	    <span class="navbar-toggler-icon"></span>
 	  </button>

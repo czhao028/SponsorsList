@@ -18,10 +18,13 @@
             window.location.href = "http://localhost:5000/";
         }, 2000);
 	      }
+	      function goToDashboard() {
+	      	window.location.href = "http://localhost:5000/dashboard";
+	      }
 	</script>
 	<div style={{sponsor_show}}>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	  <a class="navbar-brand" href="#">Dashboard</a>
+	  <a class="navbar-brand" href="#" onclick="goToDashboard()">Dashboard</a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation" style="">
 	    <span class="navbar-toggler-icon"></span>
 	  </button>
@@ -80,11 +83,15 @@
 	    	document.getElementById("list").innerHTML += data.file;
 	    	});
 	getCards();
+	function match(f) {
+		socket.emit("match", {data:f});
+		socket.emit("match2", {data:f});
+	}
 </script>
 	</div>
 	<div style={{client_show}}>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	  <a class="navbar-brand" href="sponsor_view.html">Dashboard</a>
+	  <a class="navbar-brand" href="#" onclick="goToDashboard()">Dashboard</a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation" style="">
 	    <span class="navbar-toggler-icon"></span>
 	  </button>
@@ -95,7 +102,7 @@
 	     <ul class="navbar-nav mr-auto">
 			  
 			  <li class="nav-item">
-			    <a class="nav-link" href="#">Logout</a>
+			    <a class="nav-link" href="#" onclick="signout()">Logout</a>
 			  </li>
 	    </ul>
 	    

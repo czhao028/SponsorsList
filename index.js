@@ -289,7 +289,7 @@ io.on('connection',function(socket){
           <p id = "card-cost" class = "card-cost">'+child.val().goal+'</p>\
           <p id = "card-payment_method" class = "card-payment_method">'+child.val().dealType+'</p> \
           <p id = "card-text" class="card-text">'+child.val().description+'</p>\
-          <button type="button" class="btn btn-success" onclick = "match()">Match</button>\
+          <button type="button" class="btn btn-success" onclick = "match(`'+child.val().submitter+'`)">Match</button>\
               <button type="button" class="btn btn-danger" onclick = "reject()">Reject</button>\
         </div>\
       </div>'});
@@ -308,15 +308,68 @@ io.on('connection',function(socket){
         </div>
       </div>*/
     });
-})
     socket.on("getUserInfo", function(data){
         var user = firebase.auth().currentUser;
         var myname = user.displayName;
         var myemail = user.email;
         var myisSponsor = user.isSponsor;
         socket.emit("userInfoReceived", {name:myname, email:myemail, isSponsor:myisSponsor});
+    });
+    socket.on("match", function(data) {
+        var user = firebase.auth().currentUser;
+        return firebase.database().ref('/match/' + user.uid).once('value').then(function(snapshot) {
+          console.log(snapshot.exists());
+          if (snapshot.exists()) {
+            var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
+
+            var idList = snapshot.val().id;
+            console.log(idList);
+            if(!idList.includes(data.data)) {
+              console.log("HIO");
+              firebase.database().ref('/match/'+user.uid).set({
+                id:idList+"_"+data.data
+              });
+            }
+          }
+          else {
+            firebase.database().ref('/match/'+user.uid).set({
+            id:data.data
+          });
+          }
+      });
+        
+    })
+    socket.on("match2", function(data) {var user = firebase.auth().currentUser;
+      return firebase.database().ref('/match/' + data.data).once('value').then(function(snapshot) {
+          if (snapshot.exists()) {
+        var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
+        var idList2 = snapshot.val().id
+        if(!idList2.includes(user.uid)) {
+          firebase.database().ref('/match/'+data.data).set({
+            id:idList2+"_"+user.uid
+          });
+        }
+
+        }
+        else {
+          firebase.database().ref('/match/'+data.data).set({
+            id:user.uid
+          });
+        }
+      });
     })
 });
 
+/*
+return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
+  var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
+  if(snapshot.val().isSponsor) {
+    render_dashboard(req, res, "display:none", "");
+  }
+  else {
+      render_dashboard(req, res, "", "display:none");
+  }
+});
+*/
 
 app.use(express.static(process.env.PWD + '/'));
