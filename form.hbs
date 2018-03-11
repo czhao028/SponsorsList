@@ -6,11 +6,72 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script> 
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
 	    <title></title>
 	</head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	  <a class="navbar-brand" href="#">SponsorList //click here to go home</a>
+	<script type="text/javascript">
+		var socket = io.connect('http://localhost:5000', { path:''});
+	      function signout() {
+	      	 socket.emit("signout", {});
+	      }
+	      socket.on("done_signout", function(data) {
+	    	window.location.href = "http://localhost:5000/";
+	    	});
+	</script>
+	<div style={{sponsor_show}}>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		  <a class="navbar-brand" href="#">SponsorList //click here to go home</a>
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation" style="">
+		    <span class="navbar-toggler-icon"></span>
+		  </button>
+
+		  <div class="collapse navbar-collapse" id="navbarColor02">
+		    <ul class="navbar-nav ml-auto">
+		      
+		     <ul class="navbar-nav mr-auto">
+				  
+				  <li class="nav-item">
+				    <a class="nav-link" href="#" onclick="signout()">Logout</a>
+				  </li>
+		    </ul>
+		    
+		  </div>
+		</nav>
+		
+		<center>
+			<input type="text" id="companyName" placeholder="Company Name">
+			<input type="text" id="location" placeholder="Location">
+			<input type="number" id="phone" placeholder="Phone Number">
+			<textarea id="goal" placeholder="What are you looking for?"></textarea>
+			<textarea id="ideology" placeholder="Ideology"></textarea>	
+			<textarea id="ideology" placeholder="What type of ad-space/deal are you looking for?"></textarea>
+			<div class="form-group", padding = "10px", width = "75vw">
+		      <label for="category">Select category</label>
+		      <select class="form-control" id="category">
+		        <option>School Club</option>
+		        <option>Event</option>
+		        <option>3</option>
+		        <option>4</option>
+		        <option>5</option>
+		      </select>
+		    </div>
+			<button onclick="form()">Submit</button>
+		</center>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script>
+			function match(){
+				//do something
+			}
+			function reject(){
+				//do something
+			}
+		</script>
+	</div>
+
+	<div style={{client_show}}>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	  <a class="navbar-brand" href="#">Dashboard</a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation" style="">
 	    <span class="navbar-toggler-icon"></span>
 	  </button>
@@ -21,24 +82,45 @@
 	     <ul class="navbar-nav mr-auto">
 			  
 			  <li class="nav-item">
-			    <a class="nav-link" href="#">Logout</a>
+			    <a class="nav-link" href="#" onclick="signout()">Logout</a>
 			  </li>
 	    </ul>
 	    
 	  </div>
 	</nav>
-	
-	<center>
-		<button onclick="form()">form</button>
-	</center>
-	
+	<!--category, company, cost, card-payment_method, text-->
+	 <div class="form-group", padding = "10px", width = "75vw">
+      <label for="category">Select category</label>
+      <select class="form-control" id="category">
+        <option>School Club</option>
+        <option>Event</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    </div>
+    <div width = "50%">
+		<div class="form-group">
+			<input type="text" class="form-control" placeholder="Company" id="inputCompany">
+		</div>
+
+		<div class="form-group">
+			<input type="text" class="form-control" placeholder="Description" id="inputDescription">
+		</div>
+
+		<div class="form-group">
+			<input type="text" class="form-control" placeholder="Cost" id="inputCost">
+		</div>
+
+		<div class="form-group">
+			<input type="text" class="form-control" placeholder="Payment method" id="inputMethod">
+		</div>
+		<button onclick="form()">Submit</button>
+
+		<div class="form-group">
+	      <label for="exampleTextarea">Example textarea</label>
+	      <grammarly-ghost spellcheck="false"><div data-id="3c668a24-6df2-90dd-1fb7-84ddd6240e7a" data-gramm_id="3c668a24-6df2-90dd-1fb7-84ddd6240e7a" data-gramm="gramm" data-gramm_editor="true" class="gr_ver_2" gramm="true" contenteditable="true" style="position: absolute; color: transparent; overflow: hidden; white-space: pre-wrap; border-radius: 0px; box-sizing: border-box; height: 88.4px; width: 540px; margin: 581px 0px 0px; padding: 12px 32px; z-index: 0; border-width: 1px; border-style: solid; background: none 0% 0% / auto repeat scroll padding-box padding-box rgb(247, 247, 249); top: 0px; left: 0px;"><span style="display: inline-block; line-height: 21px; color: transparent; overflow: hidden; text-align: left; float: initial; clear: none; box-sizing: border-box; vertical-align: baseline; white-space: pre-wrap; width: 100%; margin: 0px; padding: 0px; border: 0px; font-style: normal; font-variant: normal; font-weight: 400; font-stretch: normal; font-size: 14px; font-family: &quot;Nunito Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; letter-spacing: normal; text-shadow: none; height: 86px;"></span><br></div></grammarly-ghost><textarea class="form-control" id="inputText" rows="3" data-gramm="true" data-txt_gramm_id="3c668a24-6df2-90dd-1fb7-84ddd6240e7a" data-gramm_id="3c668a24-6df2-90dd-1fb7-84ddd6240e7a" spellcheck="false" data-gramm_editor="true" style="z-index: auto; position: relative; line-height: 21px; font-size: 14px; transition: none; background: transparent !important;"></textarea><grammarly-btn><div class="_1BN1N Kzi1t _2DJZN" style="z-index: 2; transform: translate(509px, 638.8px);"><div class="_1HjH7"><div title="Protected by Grammarly" class="_3qe6h">&nbsp;</div></div></div></grammarly-btn>
+	    </div>
+	</div>
+	</div>
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script>
-	function match(){
-		//do something
-	}
-	function reject(){
-		//do something
-	}
-</script>

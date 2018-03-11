@@ -33,7 +33,6 @@ app.set('trust proxy', 1) // trust first proxy
 var index_hbs = compile_handlebars('index');
 var signup_hbs = compile_handlebars('signup');
 var login_hbs = compile_handlebars('login');
-var user_hbs = compile_handlebars('user');
 var form_hbs = compile_handlebars('form');
 
 // -------------- express listener -------------- //
@@ -62,7 +61,22 @@ app.get('/user', function (req, res, next) {
 });
 
 app.get('/form', function (req, res, next) {
-    render_form(req, res);
+    var user = firebase.auth().currentUser;
+
+    if (user) {
+      var userId = firebase.auth().currentUser.uid;
+return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
+  var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
+  if(snapshot.val().isSponsor) {
+    render_form(req, res, "display:none", "");
+  }
+  else {
+      render_form(req, res, "", "display:none");
+  }
+});
+    } else {
+      render_form(req, res, "display:none", "display:none");
+    }
 });
 
 // -------------- render helper -------------- //
@@ -94,8 +108,9 @@ function render_user(req, res) {
     res.send(htmlOutputString);    
 }
 
-function render_form(req, res) {
-    var context = {  };
+function render_form(req, res, client, sponsor) {
+    var context = {client_show: client,
+                   sponsor_show: sponsor };
 
     var htmlOutputString = form_hbs.run(context);
     res.send(htmlOutputString);    
@@ -146,5 +161,14 @@ io.on('connection',function(socket){
           // ...
         });
         socket.emit("done_login", {});
+    });
+    socket.on("signout", function(data) {
+      firebase.auth().signOut().then(function() {
+        console.log("logout");
+        socket.emit("done_signout", {});
+      }).catch(function(error) {
+        // An error happened.
+      });
+
     });
 })
