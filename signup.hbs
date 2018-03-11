@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script> 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+    <title>SponsorsList</title>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="#" id="logo_link">SponsorsList</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation" style="">
+		<span class="navbar-toggler-icon"></span>
+		</button>
+
+		 <div class="collapse navbar-collapse" id="navbarColor02">
+    <ul class="navbar-nav ml-auto">
+		  <li class="nav-item">
+		    <a class="nav-link" href="#" id="signup_link">Signup</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" href="#" id="login_link">Login</a>
+		  </li>
+    </ul>
+	</div>
+	</nav>
+
+	<div id = "formLogin" style="display:block; width:50%; margin:0 auto; padding-top:5%; padding-bottom: 5%;">
+	<form>
+	  <fieldset>
+	    <h1 style="text-align: center;">Sign Up</h1>
+	    
+	    <div class="form-group">
+	      <label for="exampleInputEmail1">Email address</label>
+	      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+	      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+	    </div>
+	    <div class="form-group">
+	      <label for="exampleInputPassword1">Password</label>
+	      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+	    </div>
+	    
+	    <fieldset class="form-group">
+	    
+	      <div class="form-check">
+	        <label class="form-check-label">
+	          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+	          I want to sponsor an organization/event
+	        </label>
+	      </div>
+	      <div class="form-check">
+	      <label class="form-check-label">
+	          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+	          I want a sponsor for an organization/event
+	        </label>
+	      </div>
+      </fieldset>
+	    
+	    <button type="button" class="btn btn-primary" style="display: block; margin: 0 auto;" onclick="signUp()">Submit</button>
+	  </fieldset>
+	</form>
+	</div>
+	<script type="text/javascript">
+		$("#signup_link").click(function(){
+             window.location.href = "http://localhost:5000/signup";
+         });
+         $("#login_link").click(function(){
+             window.location.href = "http://localhost:5000/login";
+        });
+         $("#logo_link").click(function(){
+             window.location.href = "http://localhost:5000/";
+        });
+         var socket = io.connect('http://localhost:5000', { path:''});
+	      function signUp() {
+	      	 socket.emit("signup_user", {email: document.getElementById("exampleInputEmail1").value, password: document.getElementById("exampleInputPassword1").value, isSponsor: document.getElementById("optionsRadios1").checked});
+	      }
+	      socket.on("done_signUp", function(data) {
+	    	window.location.href = "http://localhost:5000/";
+	    	});
+	</script>
+	</body>
+	</html>
