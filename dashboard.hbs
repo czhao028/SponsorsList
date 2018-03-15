@@ -21,6 +21,9 @@
 	      function goToForm() {
 	      	window.location.href = "http://localhost:5000/form";
 	      }
+        function goToMatches() {
+          window.location.href = "http://localhost:5000/matches";
+        }
 	</script>
 	<div style={{client_show}}>
 		 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -44,7 +47,7 @@
     <h1 class="card-title" style="text-align: center; padding-top: 3%">Welcome!</h1>
     <div class="card-text" style="padding-bottom: 4%">
       <h3 class="user_type_label text-info" style="text-align: center;">Client</h3>
-      <h2 class="sponsor_notification" style="text-align: center;">You have <a href="#">0</a> sponsor matches</h2>
+      <h2 class="sponsor_notification" style="text-align: center;">You have <a href="#" onclick="goToMatches();">0</a> sponsor matches</h2>
       <div class="container navigation_box" style="text-align: center;">
         <div class="row" style="width: 100%;">
           <div class="col-sm">
@@ -54,7 +57,7 @@
             <a href="#" id="appButton">My Applications</a>
           </div>
           <div class="col-sm">
-            <a href="#" id="matchButton" onclick="goToSearch()">Matches</a>
+            <a href="#" id="matchButton" onclick="goToMatches()">Matches</a>
           </div>
       </div>
     </div>
@@ -116,46 +119,56 @@
     <h1 class="card-title" style="text-align: center; padding-top: 3%">Welcome!</h1>
     <div class="card-text" style="padding-bottom: 4%">
       <h3 class="user_type_label text-info" style="text-align: center;">Sponsor</h3>
-      <h2 class="sponsor_notification" style="text-align: center;">You have <a href="#">0</a> client matches</h2>
+      <h2 class="sponsor_notification" style="text-align: center;">You have <a href="#" onclick="goToMatches();">0</a> client matches</h2>
       <div class="container navigation_box" style="text-align: center;">
         <div class="row" style="width: 100%;">
+          <div class="col-sm">
+            <a href="#" id="profileButton" style="text-align: center;" onclick="goToForm()">Profile Application</a>
+          </div>
           <div class="col-sm">
             <a href="#" id="searchButton" style="text-align: center;" onclick="goToSearch()">Search</a>
           </div>
           <div class="col-sm">
-            <a href="#" id="requestsButton" style="text-align: center;">Requests</a>
+            <a href="#" id="requestsButton" style="text-align: center;">History</a>
           </div>
           <div class="col-sm">
-            <a href="#" id="matchButton" style="text-align: center;">Matches</a>
+            <a href="#" id="matchButton2" style="text-align: center;" onclick="goToMatches()">Matches</a>
           </div>
       </div>
     </div>
   </div>
 </div>
 
-<p class="description" id="desc_info" style="text-align: center; margin: 0 auto; width: 100%"></p>
+<p class="description" id="desc_info2" style="text-align: center; margin: 0 auto; width: 100%"></p>
 
 	</div>
 	<script type="text/javascript">
+  $("#profileButton").hover(
+    function() {
+      document.getElementById("desc_info2").innerHTML="Submit a Profile for Sponsors to Find You!";
+    }, function() {
+      document.getElementById("desc_info2").innerHTML="";
+    }
+  );
   $("#searchButton").hover(
     function() {
-      document.getElementById("desc_info").innerHTML="Search for potential clients!!";
+      document.getElementById("desc_info2").innerHTML="Search for potential clients!";
     }, function() {
-      document.getElementById("desc_info").innerHTML="";
+      document.getElementById("desc_info2").innerHTML="";
     }
   );
   $("#requestsButton").hover(
     function() {
-      document.getElementById("desc_info").innerHTML="Check out clients who have requested your sponsorship!";
+      document.getElementById("desc_info2").innerHTML="Check out clients who have requested your sponsorship!";
     }, function() {
-      document.getElementById("desc_info").innerHTML="";
+      document.getElementById("desc_info2").innerHTML="";
     }
   );
-  $("#matchButton").hover(
+  $("#matchButton2").hover(
     function() {
-      document.getElementById("desc_info").innerHTML="Browse through Sponsors that matched with you!";
+      document.getElementById("desc_info2").innerHTML="Browse through Sponsors that matched with you!";
     }, function() {
-      document.getElementById("desc_info").innerHTML="";
+      document.getElementById("desc_info2").innerHTML="";
     }
   );
   function goToSearch() {
